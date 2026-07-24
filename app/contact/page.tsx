@@ -43,7 +43,7 @@ export default function ContactPage() {
           </h3>
 
           <p className="mt-3 text-neutral-400">
-            +91 XXXXX XXXXX
+            +91 95858 24943
           </p>
         </div>
 
