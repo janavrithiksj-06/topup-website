@@ -1,4 +1,5 @@
 import FadeIn from "./FadeIn";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -17,12 +18,12 @@ export default function CTA() {
           Topup is building the future of charging infrastructure.
         </p>
 
-        <a
-          href="mailto:hello@topup.in"
-          className="mt-12 inline-flex rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-105"
-        >
-          Get in Touch
-        </a>
+     <Link
+  href="/contact"
+  className="mt-12 inline-flex rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-105"
+>
+  Get in Touch
+</Link>
 
       </div>
       </section>

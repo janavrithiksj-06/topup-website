@@ -9,12 +9,12 @@ export default function Footer() {
             <Image
               src="/images/logo.png"
               alt="Topup"
-              width={175}
-              height={52}
+              width={150}
+              height={45}
               priority
               className="h-auto w-auto"
             />
-            <h2 className="mt-1 text-4xl font-semibold leading-tight md:text-5xl">
+            <h2 className="mt-2 text-4xl font-semibold leading-tight md:text-5xl">
               Powering the Future of Mobility.
             </h2>
           </div>
