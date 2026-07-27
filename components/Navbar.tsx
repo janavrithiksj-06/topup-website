@@ -7,6 +7,7 @@ import { Menu, Zap } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+const [mobileOpen, setMobileOpen] = useState(false);
 
 useEffect(() => {
   let ticking = false;
@@ -130,13 +131,57 @@ active:scale-95 hover:bg-[#ffa726]"
 
         {/* Mobile */}
         <button
-          className={`lg:hidden flex h-12.5 w-14 items-center justify-center rounded-xl border backdrop-blur-md ${glass}`}
-        >
-          <Menu
-            className={scrolled ? "text-black" : "text-white"}
-          />
-        </button>
+  onClick={() => setMobileOpen(!mobileOpen)}
+  className={`lg:hidden flex h-14 w-14 items-center justify-center rounded-xl border backdrop-blur-xl ${glass}`}
+>
+  <Menu className={scrolled ? "text-black" : "text-white"} />
+</button>
       </div>
+      {mobileOpen && (
+  <div className="fixed inset-0 z-40 bg-black/50 lg:hidden">
+    <div className="absolute right-4 top-24 w-64 rounded-2xl border border-white/10 bg-neutral-900 p-6 shadow-2xl">
+      <div className="flex flex-col gap-5">
+
+        <Link
+          href="/"
+          onClick={() => setMobileOpen(false)}
+        >
+          Home
+        </Link>
+
+        <Link
+          href="/network"
+          onClick={() => setMobileOpen(false)}
+        >
+          Network
+        </Link>
+
+        <Link
+          href="/partner"
+          onClick={() => setMobileOpen(false)}
+        >
+          Partner
+        </Link>
+
+        <Link
+          href="/contact"
+          onClick={() => setMobileOpen(false)}
+        >
+          Contact
+        </Link>
+
+        <Link
+          href="/network"
+          onClick={() => setMobileOpen(false)}
+          className="mt-2 rounded-full bg-[#F7931A] px-5 py-3 text-center font-semibold text-black"
+        >
+          Find Charger
+        </Link>
+
+      </div>
+    </div>
+  </div>
+)}
     </header>
   );
 }
