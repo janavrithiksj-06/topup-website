@@ -3,68 +3,81 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-screen items-center overflow-hidden scroll-mt-28"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#111111] scroll-mt-28"
     >
-      <motion.div
-        className="absolute inset-0"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 16, ease: "easeInOut", repeat: Infinity }}
-      >
+      <div className="absolute inset-0">
         <Image
           src="/images/hero.png"
-          alt="Topup EV Charging"
+          alt="Topup charging station"
           fill
           priority
-          className="object-cover object-right scale-105"
+          sizes="100vw"
+          className="object-cover object-center"
         />
-      </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/55 to-[#111111]/15" />
+      </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30" />
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 py-32 md:px-10">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-[#D6D6D6]"
+        >
+          Launching 2026 — Tamil Nadu · Karnataka
+        </motion.p>
 
-      {/* Orange ambient glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(247,147,26,0.18),transparent_35%)]" />
-
-      <motion.div
-        className="relative z-10 mx-auto w-full max-w-7xl px-8"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <p className="mb-6 text-sm font-medium uppercase tracking-[0.35em] text-[#F7931A]">
-          PREMIUM EV CHARGING NETWORK
-        </p>
-
-        <h1 className="max-w-4xl text-6xl font-semibold leading-[0.9] tracking-[-0.04em] md:text-[7.5rem]">
-          <span className="text-[#F7931A]">Charge Fast.</span>
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl text-6xl font-medium leading-[0.92] tracking-[-0.03em] text-[#F8F8F5] sm:text-7xl md:text-8xl lg:text-9xl"
+        >
+          Charge fast.
           <br />
-          Drive Free.
-        </h1>
+          <span className="text-[#F7931A]">Drive further.</span>
+        </motion.h1>
 
-        <p className="mt-8 max-w-xl text-lg leading-8 text-white/75">
-          Premium charging infrastructure built for highways, cities, and the
-          next generation of electric mobility.
-        </p>
-
-        <div className="mt-14 flex flex-wrap gap-5">
-          <Link
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-5"
+        >
+         <Link
             href="/network"
-            className="rounded-full bg-[#F7931A] px-8 py-4 text-[15px] font-semibold text-black transition-all duration-300 hover:scale-105 hover:brightness-110"
+            className="bg-[#F7931A] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5]"
           >
             Find Charger
           </Link>
 
           <Link
             href="/partner"
-            className="rounded-full border border-[#F7931A]/50 px-8 py-4 text-[15px] font-medium text-[#F7931A] transition-all duration-300 hover:bg-[#F7931A] hover:text-black"
+            className="group flex items-center gap-2 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8F8F5] transition-colors duration-300 hover:text-[#F7931A]"
           >
             Partner With Us
+            <ArrowRight
+              size={14}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
           </Link>
-        </div>
+        </motion.div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.9 }}
+        className="absolute bottom-8 right-6 hidden items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-[#D6D6D6]/60 md:right-10 md:flex"
+      >
+        <span className="h-8 w-px bg-[#D6D6D6]/30" />
+        Scroll
       </motion.div>
     </section>
   );

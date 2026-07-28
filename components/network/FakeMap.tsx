@@ -8,14 +8,14 @@ export default function FakeMap() {
 
   if (!token) {
     return (
-      <div className="flex h-[70vh] items-center justify-center bg-neutral-900 text-white">
+      <div className="flex h-[70vh] items-center justify-center bg-[#0c0c0c] text-[#D6D6D6]">
         Map unavailable.
       </div>
     );
   }
 
   return (
-    <div className="h-[72vh] w-full">
+    <div className="h-[70vh] w-full">
       <Map
         mapboxAccessToken={token}
         initialViewState={{

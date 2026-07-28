@@ -1,45 +1,37 @@
 export default function PartnerCTA() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16 md:px-10">
-      <div className="relative overflow-hidden rounded-[40px] border border-white/10 bg-neutral-950 p-10 md:p-16">
-        {/* Subtle orange glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(247,147,26,0.12),transparent_45%)]" />
+    <section className="border-t border-white/10">
+      <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10">
+        <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+          Partner With Topup
+        </p>
 
-        {/* Decorative gradient line */}
-        <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-[#F7931A] via-[#FFB347] to-transparent" />
+        <h2 className="mt-5 max-w-3xl text-4xl font-medium leading-[1] tracking-[-0.02em] md:text-5xl">
+          Bring premium EV charging
+          <br />
+          to your property.
+        </h2>
 
-        <div className="relative z-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#F7931A]">
-            Partner With Topup
-          </p>
+        <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#D6D6D6]">
+          Join Topup&apos;s growing network of hospitality, retail,
+          commercial and highway partners, and help build India&apos;s next
+          generation of EV charging infrastructure.
+        </p>
 
-          <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight text-white md:text-5xl">
-            Bring premium EV charging
-            <br />
-            to your property.
-          </h2>
+        <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
+          <a
+            href="/partner"
+            className="bg-[#F7931A] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5]"
+          >
+            Become a Partner
+          </a>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
-            Join Topup's growing network of hospitality, retail, commercial and
-            highway partners, and help build India's next generation of EV
-            charging infrastructure.
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="/partner"
-              className="rounded-full bg-[#F7931A] px-8 py-3.5 font-semibold text-black transition duration-300 hover:-translate-y-0.5 hover:brightness-110"
-            >
-              Become a Partner
-            </a>
-
-            <a
-              href="/contact"
-              className="rounded-full border border-white/15 px-8 py-3.5 font-semibold text-white transition duration-300 hover:border-[#F7931A] hover:text-[#F7931A]"
-            >
-              Contact Us
-            </a>
-          </div>
+          <a
+            href="/contact"
+            className="text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8F8F5] transition-colors duration-300 hover:text-[#F7931A]"
+          >
+            Contact Us
+          </a>
         </div>
       </div>
     </section>
