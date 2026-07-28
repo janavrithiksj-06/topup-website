@@ -4,7 +4,7 @@ import PartnerCTA from "@/components/network/PartnerCTA";
 
 export default function NetworkPage() {
   return (
-    <main className="min-h-screen bg-[#F7F7F5] text-neutral-900">
+    <main className="min-h-screen bg-[#111111] text-white">
         <div className="absolute inset-x-0 top-0 -z-10 h-[500px] bg-[radial-gradient(circle_at_top,rgba(247,147,26,0.12),transparent_65%)]" />
       {/* Hero */}
       <section className="mx-auto flex max-w-7xl flex-col px-6 pt-36 pb-16 md:px-10">
@@ -18,7 +18,7 @@ export default function NetworkPage() {
   next generation of mobility.
 </h1>
 
-        <p className="mt-8 max-w-2xl text-lg leading-8 text-neutral-600">
+        <p className="mt-8 max-w-2xl text-lg leading-8 text-neutral-300">
           We're building a premium charging network designed for reliability,
           speed, and seamless EV travel. Our first locations are launching soon
           across South India.
@@ -26,17 +26,17 @@ export default function NetworkPage() {
       </section>
 
    {/* Search */}
-<section className="mx-auto -mt-2 max-w-5xl px-6 pb-8 md:px-10">
+<section className="mx-auto mt-2 max-w-5xl px-6 pb-10 md:px-10">
   <SearchBar />
 </section>
 
 {/* Map */}
 <section className="mx-auto pb-12 max-w-7xl px-6 md:px-10">
-        <div className="relative overflow-hidden rounded-3xl border border-neutral-200 shadow-2xl">
+        <div className="relative overflow-hidden rounded-[36px] border border-neutral-300 bg-white shadow-[0_30px_80px_rgba(0,0,0,.45)]">
           <FakeMap />
 
           {/* Overlay */}
-          <div className="pointer-events-none absolute left-8 top-8 max-w-md rounded-3xl border border-neutral-200 bg-white/95 p-8 shadow-[0_25px_60px_rgba(0,0,0,.15)] backdrop-blur-xl">
+          <div className="pointer-events-none absolute left-8 top-8 max-w-md rounded-3xl border border-neutral-200 bg-white p-8 shadow-[0_20px_50px_rgba(0,0,0,.12)] backdrop-blur-xl">
             <p className="text-xs uppercase tracking-[0.25em] text-[#F7931A]">
               Coming Soon
             </p>
@@ -54,7 +54,7 @@ export default function NetworkPage() {
       </section>
 
       {/* CTA */}
-<section className="mt-0">
+<section className="mt-8">
   <PartnerCTA />
 </section>
     </main>

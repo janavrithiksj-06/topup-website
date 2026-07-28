@@ -47,15 +47,13 @@ const glass = scrolled
         >
           <Link
             href="/"
-            className={`flex h-12.5 items-center rounded-xl border px-6 backdrop-blur-md transition-colors duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_40px_rgba(0,0,0,.15)] ${glass}`}
+            className={`flex h-12.5 items-center rounded-xl border px-4 backdrop-blur-md transition-colors duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_40px_rgba(0,0,0,.15)] ${glass}`}
           >
-            <span
-              className={`text-2xl font-bold ${
-                scrolled ? "text-black" : "text-white"
-              }`}
-            >
-              Topup
-            </span>
+<img
+  src={scrolled ? "/images/logo-dark.png" : "/images/logo2.png"}
+  alt="Topup"
+  className="h-7 w-auto transition-all duration-300"
+/>
           </Link>
         </motion.div>
 
