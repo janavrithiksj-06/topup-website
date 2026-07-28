@@ -1,35 +1,29 @@
 "use client";
 
-import { Search, MapPin } from "lucide-react";
+import { Search } from "lucide-react";
 
 export default function SearchBar() {
   return (
-    <div className="mx-auto -mt-10 max-w-4xl px-6 relative z-20">
-      <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-neutral-900/90 p-3 shadow-2xl backdrop-blur-xl">
+    <div className="mx-auto max-w-4xl">
+      <div className="flex items-center gap-4 rounded-2xl border border-neutral-200 bg-white px-6 py-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
 
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F7931A]/15">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F7931A]/10">
           <Search className="h-5 w-5 text-[#F7931A]" />
         </div>
 
         <div className="flex-1">
-          <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
-            Search
+          <p className="text-sm font-medium text-neutral-900">
+            Search by city, highway or destination
           </p>
 
-          <div className="mt-1 flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-neutral-500" />
-            <span className="text-neutral-300">
-              Charging stations coming soon...
-            </span>
-          </div>
+          <p className="mt-1 text-sm text-neutral-500">
+            Available soon with the launch of the Topup network.
+          </p>
         </div>
 
-        <button
-          disabled
-          className="rounded-xl bg-[#F7931A] px-6 py-3 font-semibold text-black opacity-60 cursor-not-allowed"
-        >
+        <span className="rounded-full border border-[#F7931A]/20 bg-[#F7931A]/8 px-4 py-2 text-sm font-medium text-[#F7931A]">
           Coming Soon
-        </button>
+        </span>
 
       </div>
     </div>
