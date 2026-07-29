@@ -23,7 +23,7 @@ export default function FakeMap() {
           latitude: 12.5,
           zoom: 5.6,
         }}
-        mapStyle="mapbox://styles/mapbox/dark-v11"
+        mapStyle="mapbox://styles/mapbox/standard"
         style={{ width: "100%", height: "100%" }}
         attributionControl={false}
         logoPosition="bottom-right"
