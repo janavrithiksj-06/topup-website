@@ -101,12 +101,30 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)] lg:block"
 
         {/* Mobile menu toggle */}
         <button
-          onClick={() => setMobileOpen(true)}
-          className="text-[#F8F8F5] lg:hidden"
-          aria-label="Open menu"
-        >
-          <Menu size={22} strokeWidth={1.5} />
-        </button>
+  onClick={() => setMobileOpen(true)}
+  aria-label="Open menu"
+  className="
+    group
+    relative
+    z-10
+    lg:hidden
+    flex
+    items-center
+    justify-center
+    rounded-full
+    border border-white/10
+    bg-[#1A1A1A]/75
+    p-3
+    text-[#F8F8F5]
+    backdrop-blur-xl
+    shadow-[0_8px_24px_rgba(0,0,0,0.25)]
+    transition-all duration-300
+    hover:bg-[#242424]/80
+    hover:scale-105
+  "
+>
+  <Menu size={22} strokeWidth={1.5} />
+</button>
       </div>
 
       <AnimatePresence>
