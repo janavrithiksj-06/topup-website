@@ -12,14 +12,18 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden bg-[#0B1220] scroll-mt-28"
     >
       <div className="absolute inset-0">
-        <Image
-          src="/images/hero3.png"
-          alt="Topup charging station"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+       <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="auto"
+  poster="/images/hero-poster.jpg"
+  className="absolute inset-0 h-full w-full object-cover"
+>
+  <source src="/videos/hero.webm" type="video/webm" />
+  <source src="/videos/hero1.mp4" type="video/mp4" />
+</video>
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220] via-[#0B1220]/70 to-transparent" />
       </div>
