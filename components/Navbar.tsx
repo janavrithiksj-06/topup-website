@@ -161,7 +161,7 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
               <Link
             href="/network"
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 w-fit rounded-full bg-[#F7931A] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111]"
+                className="mt-4 w-fit rounded-full bg-[#2563EB] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111]"
               >
                 Find Charger
               </Link>

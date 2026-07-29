@@ -40,7 +40,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="bg-[#111111] text-[#F8F8F5]">
+    <main className="bg-[#171A1F] text-[#F8F8F5]">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-white/10">
         <div

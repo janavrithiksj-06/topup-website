@@ -52,7 +52,7 @@ export default function PartnerPage() {
   ];
 
   return (
-    <main className="bg-[#111111] text-[#F8F8F5]">
+    <main className="bg-[#171A1F] text-[#F8F8F5]">
       {/* HERO */}
       <section className="mx-auto max-w-[1400px] px-6 pt-40 pb-24 md:px-10">
         <div className="max-w-3xl">
