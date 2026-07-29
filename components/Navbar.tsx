@@ -27,24 +27,12 @@ export default function Navbar() {
             touching a light background directly, on any page. */}
 <Link
   href="/"
-  className="
-    group
-    relative
-    z-10
-    flex
-    items-center
-    rounded-2xl
-    bg-white/90
-    border border-black/5
-    px-1 py-1
-    backdrop-blur-xl
-    shadow-[0_12px_32px_rgba(0,0,0,0.12)]
-  "
+  className="relative z-10 block"
 >
   <img
-    src="/images/logo4.png"
+    src="/images/logo7.png"
     alt="TopUp"
-    className="h-9 w-auto"
+    className="h-16 w-auto"
   />
 </Link>
 
@@ -139,7 +127,7 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
           >
             <div className="flex h-20 items-center justify-between px-6">
               <img
-  src="/images/logo4.png"
+  src="/images/logo7.png"
   alt="TopUp"
   className="h-10 w-auto"
 />
