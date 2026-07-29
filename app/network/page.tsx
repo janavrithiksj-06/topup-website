@@ -44,11 +44,6 @@ export default function NetworkPage() {
         </div>
       </section>
 
-      {/* Notify */}
-      <section className="mx-auto max-w-[1400px] px-6 pb-24 md:px-10">
-        <NotifyForm />
-      </section>
-
       {/* CTA */}
       <PartnerCTA />
     </main>

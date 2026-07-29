@@ -20,17 +20,32 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-6 z-50 px-6 md:px-10">
-      <div className="relative mx-auto flex max-w-[1400px] items-center justify-between">
+      <div className="relative mx-auto flex max-w-[1500px] items-center justify-between">
         {/* Logo, pinned left. mix-blend-mode doesn't reliably blend against
             content scrolling under a position:fixed element in Chromium, so
             instead the logo sits on its own small dark chip — it's never
             touching a light background directly, on any page. */}
         <Link
-          href="/"
-          className="relative z-10 flex items-center rounded-full bg-[#111111]/90 px-4 py-2 backdrop-blur-md"
-        >
-          <img src="/images/logo2.png" alt="Topup" className="h-6 w-auto" />
-        </Link>
+  href="/"
+  className="
+    group
+    relative z-10
+    flex items-center
+    rounded-full
+    border border-white/10
+    bg-[#1A1A1A]/75
+    px-4 py-2
+    backdrop-blur-xl
+    shadow-[0_8px_24px_rgba(0,0,0,0.25)]
+    transition-all duration-300
+  "
+>
+  <img
+    src="/images/logo2.png"
+    alt="TopUp"
+    className="h-7 w-auto transition-transform duration-300 group-hover:scale-105"
+  />
+</Link>
 
         {/* Nav pill, centered independently of logo/CTA width */}
         <nav
@@ -51,14 +66,15 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="active-pill"
-                    className="absolute inset-0 rounded-full bg-[#F8F8F5]"
+                    className="absolute inset-0 rounded-full bg-white
+shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
                     transition={{ type: "spring", stiffness: 500, damping: 34 }}
                   />
                 )}
                 {!isActive && isHovered && (
                   <motion.span
                     layoutId="hover-pill"
-                    className="absolute inset-0 rounded-full bg-white/10"
+                    className="absolute inset-0 rounded-full bg-white/8"
                     transition={{ type: "spring", stiffness: 500, damping: 34 }}
                   />
                 )}
@@ -77,7 +93,8 @@ export default function Navbar() {
         {/* CTA, pinned right */}
        <Link
             href="/network"
-          className="hidden rounded-full bg-[#F7931A] px-6 py-2.5 text-[14px] font-semibold text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5] lg:block"
+          className="hidden rounded-full bg-[#F7931A] px-6 py-2.5 text-[14px] font-semibold text-[#111111] transition-colors duration-300 hover:bg-white
+shadow-[0_2px_12px_rgba(255,255,255,0.15)] lg:block"
         >
           Find Charger
         </Link>
@@ -102,7 +119,11 @@ export default function Navbar() {
             className="fixed inset-0 top-0 z-50 bg-[#111111] lg:hidden"
           >
             <div className="flex h-20 items-center justify-between px-6">
-              <img src="/images/logo2.png" alt="Topup" className="h-6 w-auto" />
+              <img
+  src="/images/logo2.png"
+  alt="TopUp"
+  className="h-7 w-auto"
+/>
               <button
                 onClick={() => setMobileOpen(false)}
                 className="text-[#F8F8F5]"
