@@ -7,7 +7,7 @@ export default function NetworkPage() {
     <main className="min-h-screen bg-[#111111] text-[#F8F8F5]">
       {/* Hero */}
       <section className="mx-auto flex max-w-[1400px] flex-col px-6 pt-40 pb-16 md:px-10">
-        <p className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-[#F7931A]">
+        <p className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-[#2563EB]">
           Topup Network
         </p>
 
@@ -30,7 +30,7 @@ export default function NetworkPage() {
           <FakeMap />
 
           <div className="pointer-events-none absolute left-6 top-6 max-w-sm border border-white/10 bg-[#111111]/90 p-7 backdrop-blur-sm md:left-8 md:top-8">
-            <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+            <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
               Coming Soon
             </p>
             <h2 className="mt-3 text-xl font-medium tracking-[-0.01em]">

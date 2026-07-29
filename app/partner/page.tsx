@@ -56,14 +56,14 @@ export default function PartnerPage() {
       {/* HERO */}
       <section className="mx-auto max-w-[1400px] px-6 pt-40 pb-24 md:px-10">
         <div className="max-w-3xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.35em] text-[#F7931A]">
+          <p className="text-[12px] font-medium uppercase tracking-[0.35em] text-[#2563EB]">
             Partner With Topup
           </p>
 
           <h1 className="mt-6 text-5xl font-medium leading-[0.95] tracking-[-0.02em] md:text-7xl">
             Own the future of
             <br />
-            <span className="text-[#F7931A]">EV charging.</span>
+            <span className="text-[#2563EB]">EV charging.</span>
           </h1>
 
           <p className="mt-8 max-w-2xl text-[17px] leading-8 text-[#D6D6D6]">
@@ -75,14 +75,14 @@ export default function PartnerPage() {
           <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
             <a
               href="/contact"
-              className="bg-[#F7931A] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5]"
+              className="bg-[#2563EB] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5]"
             >
               Become a Partner
             </a>
 
             <a
               href="#models"
-              className="text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8F8F5] transition-colors duration-300 hover:text-[#F7931A]"
+              className="text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8F8F5] transition-colors duration-300 hover:text-[#2563EB]"
             >
               Explore Opportunities
             </a>
@@ -94,7 +94,7 @@ export default function PartnerPage() {
       <section id="models" className="border-t border-white/10">
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10">
           <div className="max-w-2xl">
-            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
               Two Ways To Partner
             </p>
             <h2 className="mt-5 text-4xl font-medium tracking-[-0.01em] md:text-5xl">
@@ -115,7 +115,7 @@ export default function PartnerPage() {
                   i > 0 ? "lg:border-l lg:pl-14" : "lg:pr-14"
                 }`}
               >
-                <p className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#F7931A]">
+                <p className="text-[12px] font-medium uppercase tracking-[0.2em] text-[#2563EB]">
                   {item.subtitle}
                 </p>
                 <h3 className="mt-3 text-2xl font-medium tracking-[-0.01em]">
@@ -128,7 +128,7 @@ export default function PartnerPage() {
                 <div className="mt-8 space-y-3">
                   {item.points.map((point) => (
                     <div key={point} className="flex items-center gap-3">
-                      <Check size={14} strokeWidth={2.5} className="text-[#F7931A]" />
+                      <Check size={14} strokeWidth={2.5} className="text-[#2563EB]" />
                       <span className="text-[15px]">{point}</span>
                     </div>
                   ))}
@@ -136,7 +136,7 @@ export default function PartnerPage() {
 
                 <a
                   href="/contact"
-                  className="mt-10 inline-flex border border-[#F7931A] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F7931A] transition-colors duration-300 hover:bg-[#F7931A] hover:text-[#111111]"
+                  className="mt-10 inline-flex border border-[#2563EB] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.15em] text-[#2563EB] transition-colors duration-300 hover:bg-[#2563EB] hover:text-[#111111]"
                 >
                   {item.button}
                 </a>
@@ -150,7 +150,7 @@ export default function PartnerPage() {
       <section className="border-t border-white/10">
         <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:grid-cols-2 md:px-10">
           <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
               What Topup Handles
             </p>
             <h2 className="mt-5 text-4xl font-medium leading-[1.05] tracking-[-0.01em]">
@@ -165,7 +165,7 @@ export default function PartnerPage() {
             </p>
 
             <div className="mt-10 border-t border-white/10 pt-6">
-              <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#F7931A]">
+              <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#2563EB]">
                 Our goal is simple
               </p>
               <p className="mt-3 leading-7 text-[#D6D6D6]">
@@ -184,7 +184,7 @@ export default function PartnerPage() {
                   i % 2 === 1 ? "sm:pl-6" : ""
                 }`}
               >
-                <Check size={14} strokeWidth={2.5} className="shrink-0 text-[#F7931A]" />
+                <Check size={14} strokeWidth={2.5} className="shrink-0 text-[#2563EB]" />
                 <span className="text-[14px] text-[#D6D6D6]">{service}</span>
               </div>
             ))}
@@ -196,7 +196,7 @@ export default function PartnerPage() {
       <section className="border-t border-white/10">
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10">
           <div className="max-w-2xl">
-            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
               How It Works
             </p>
             <h2 className="mt-5 text-4xl font-medium tracking-[-0.01em] md:text-5xl">
@@ -212,7 +212,7 @@ export default function PartnerPage() {
           <div className="mt-16 grid gap-10 border-t border-white/10 pt-10 md:grid-cols-5 md:gap-8">
             {steps.map((step) => (
               <div key={step.number}>
-                <p className="text-4xl font-medium tracking-[-0.02em] text-[#F7931A]/30">
+                <p className="text-4xl font-medium tracking-[-0.02em] text-[#2563EB]/30">
                   {step.number}
                 </p>
                 <h3 className="mt-5 text-lg font-medium">{step.title}</h3>
@@ -229,7 +229,7 @@ export default function PartnerPage() {
       <section className="border-t border-white/10">
         <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-24 md:grid-cols-2 md:px-10 md:gap-20">
           <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
               Why Topup
             </p>
             <h2 className="mt-5 text-4xl font-medium leading-[1.05] tracking-[-0.01em]">
@@ -252,7 +252,7 @@ export default function PartnerPage() {
                   i % 2 === 1 ? "sm:border-l sm:pl-8" : "sm:pr-8"
                 }`}
               >
-                <h3 className="text-lg font-medium text-[#F7931A]">
+                <h3 className="text-lg font-medium text-[#2563EB]">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-[14px] leading-6 text-[#D6D6D6]">
@@ -267,7 +267,7 @@ export default function PartnerPage() {
       {/* CTA */}
       <section className="border-t border-white/10">
         <div className="mx-auto max-w-[900px] px-6 py-28 text-center md:px-10">
-          <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+          <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
             Let&apos;s Build Together
           </p>
 
@@ -284,14 +284,14 @@ export default function PartnerPage() {
           <div className="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-5">
             <a
               href="/contact"
-              className="bg-[#F7931A] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5]"
+              className="bg-[#2563EB] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5]"
             >
               Contact Us
             </a>
 
             <a
               href="/network"
-              className="flex items-center text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8F8F5] transition-colors duration-300 hover:text-[#F7931A]"
+              className="flex items-center text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8F8F5] transition-colors duration-300 hover:text-[#2563EB]"
             >
               Explore Our Network
             </a>

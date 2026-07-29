@@ -57,7 +57,7 @@ export default function ContactPage() {
             <h1 className="text-5xl font-medium leading-[0.95] tracking-[-0.02em] md:text-7xl">
               Let&apos;s build the future
               <br />
-              of <span className="text-[#F7931A]">EV charging</span>.
+              of <span className="text-[#2563EB]">EV charging</span>.
             </h1>
             <p className="mt-8 max-w-xl text-[17px] leading-8 text-[#D6D6D6]">
               From hotels and commercial properties to fleet operators and
@@ -73,7 +73,7 @@ export default function ContactPage() {
         <div className="grid gap-16 lg:grid-cols-[360px_1fr] lg:gap-24">
           {/* Business Information */}
           <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
               Get in Touch
             </p>
             <h2 className="mt-6 text-3xl font-medium tracking-[-0.01em]">
@@ -87,7 +87,7 @@ export default function ContactPage() {
 
             <div className="mt-12 space-y-8 border-t border-white/10 pt-10">
               <div className="flex items-start gap-4">
-                <Mail className="mt-0.5 h-5 w-5 text-[#F7931A]" strokeWidth={1.5} />
+                <Mail className="mt-0.5 h-5 w-5 text-[#2563EB]" strokeWidth={1.5} />
                 <div>
                   <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
                     Email
@@ -97,7 +97,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <MapPin className="mt-0.5 h-5 w-5 text-[#F7931A]" strokeWidth={1.5} />
+                <MapPin className="mt-0.5 h-5 w-5 text-[#2563EB]" strokeWidth={1.5} />
                 <div>
                   <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
                     Location
@@ -107,7 +107,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <Phone className="mt-0.5 h-5 w-5 text-[#F7931A]" strokeWidth={1.5} />
+                <Phone className="mt-0.5 h-5 w-5 text-[#2563EB]" strokeWidth={1.5} />
                 <div>
                   <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
                     Business Hours
@@ -194,13 +194,13 @@ export default function ContactPage() {
                 />
               </label>
 
-              {success && <p className="text-[14px] text-[#F7931A]">{success}</p>}
+              {success && <p className="text-[14px] text-[#2563EB]">{success}</p>}
               {error && <p className="text-[14px] text-red-400">{error}</p>}
 
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center gap-3 bg-[#F7931A] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5] disabled:opacity-50"
+                className="inline-flex items-center gap-3 bg-[#2563EB] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5] disabled:opacity-50"
               >
                 {loading ? "Sending" : "Send Enquiry"}
                 <ArrowRight size={16} />
@@ -218,7 +218,7 @@ export default function ContactPage() {
       {/* Why Topup */}
       <section className="border-t border-white/10">
         <div className="mx-auto max-w-[1400px] px-6 py-28 md:px-10">
-          <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+          <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
             Why Topup
           </p>
           <h2 className="mt-5 max-w-xl text-4xl font-medium tracking-[-0.01em] md:text-5xl">

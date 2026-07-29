@@ -2,7 +2,7 @@ export default function PartnerCTA() {
   return (
     <section className="border-t border-white/10">
       <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10">
-        <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#F7931A]">
+        <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
           Partner With Topup
         </p>
 
@@ -21,14 +21,14 @@ export default function PartnerCTA() {
         <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
           <a
             href="/partner"
-            className="bg-[#F7931A] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5]"
+            className="bg-[#2563EB] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5]"
           >
             Become a Partner
           </a>
 
           <a
             href="/contact"
-            className="text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8F8F5] transition-colors duration-300 hover:text-[#F7931A]"
+            className="text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8F8F5] transition-colors duration-300 hover:text-[#2563EB]"
           >
             Contact Us
           </a>

@@ -6,14 +6,16 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-8 py-14">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-md">
-            <Image
-              src="/images/logo.png"
-              alt="Topup"
-              width={150}
-              height={45}
-              priority
-              className="h-auto w-auto"
-            />
+            <div className="mb-6 inline-flex rounded-2xl bg-white p-3 shadow-lg">
+  <Image
+    src="/images/logo5.png"
+    alt="Topup"
+    width={130}
+    height={30}
+    priority
+    className="h-20 w-auto rounded-lg"
+  />
+</div>
             <h2 className="mt-2 text-4xl font-semibold leading-tight md:text-5xl">
               Powering the Future of Mobility.
             </h2>

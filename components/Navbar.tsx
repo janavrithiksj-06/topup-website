@@ -25,25 +25,26 @@ export default function Navbar() {
             content scrolling under a position:fixed element in Chromium, so
             instead the logo sits on its own small dark chip — it's never
             touching a light background directly, on any page. */}
-        <Link
+<Link
   href="/"
   className="
     group
-    relative z-10
-    flex items-center
-    rounded-full
-    border border-white/10
-    bg-[#1A1A1A]/75
-    px-4 py-2
+    relative
+    z-10
+    flex
+    items-center
+    rounded-2xl
+    bg-white/90
+    border border-black/5
+    px-1 py-1
     backdrop-blur-xl
-    shadow-[0_8px_24px_rgba(0,0,0,0.25)]
-    transition-all duration-300
+    shadow-[0_12px_32px_rgba(0,0,0,0.12)]
   "
 >
   <img
-    src="/images/logo2.png"
+    src="/images/logo4.png"
     alt="TopUp"
-    className="h-7 w-auto transition-transform duration-300 group-hover:scale-105"
+    className="h-9 w-auto"
   />
 </Link>
 
@@ -93,8 +94,8 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
         {/* CTA, pinned right */}
        <Link
             href="/network"
-          className="hidden rounded-full bg-[#F7931A] px-6 py-2.5 text-[14px] font-semibold text-[#111111] transition-colors duration-300 hover:bg-white
-shadow-[0_2px_12px_rgba(255,255,255,0.15)] lg:block"
+          className="hidden rounded-full bg-[#2563EB] px-6 py-2.5 text-[14px] font-semibold text-[#F8FAFC] transition-colors duration-300 hover:bg-[#06B6D4]
+ lg:block"
         >
           Find Charger
         </Link>
@@ -138,9 +139,9 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)] lg:block"
           >
             <div className="flex h-20 items-center justify-between px-6">
               <img
-  src="/images/logo2.png"
+  src="/images/logo4.png"
   alt="TopUp"
-  className="h-7 w-auto"
+  className="h-10 w-auto"
 />
               <button
                 onClick={() => setMobileOpen(false)}
