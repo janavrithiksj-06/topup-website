@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -80,13 +81,62 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
         </nav>
 
         {/* CTA, pinned right */}
-       <Link
-            href="/network"
-          className="hidden rounded-full bg-[#2563EB] px-6 py-2.5 text-[14px] font-semibold text-[#F8FAFC] transition-colors duration-300 hover:bg-[#06B6D4]
- lg:block"
-        >
-          Find Charger
-        </Link>
+<Link
+  href="/network"
+  className="
+    group
+    relative
+    hidden
+    overflow-hidden
+    rounded-full
+    px-7
+    py-3
+    lg:flex
+    items-center
+    justify-center
+
+    bg-[#0B1220]
+    border border-[#1E3A5F]
+    shadow-[0_10px_30px_rgba(0,0,0,.35)]
+
+    transition-all
+    duration-500
+
+    hover:-translate-y-1
+    hover:shadow-[0_15px_45px_rgba(26,115,232,.35)]
+  "
+>
+  {/* flowing energy */}
+  <div className="absolute inset-0 overflow-hidden rounded-full">
+
+    <div className="absolute inset-0 bg-[#0B1220]" />
+
+    <div className="energy absolute -left-1/2 top-0 h-full w-[200%]" />
+
+    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
+
+  </div>
+
+  {/* glow */}
+  <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 bg-[radial-gradient(circle,rgba(79,195,247,.25),transparent_70%)]"/>
+
+  <div className="relative z-10 flex items-center gap-2 text-white">
+    <MapPin
+      size={16}
+      className="transition duration-300 group-hover:scale-110"
+    />
+
+    <span className="font-semibold">
+      Find Charger
+    </span>
+
+    <ArrowRight
+      size={16}
+      className="transition duration-300 group-hover:translate-x-1"
+    />
+  </div>
+</Link>
+
 
         {/* Mobile menu toggle */}
         <button

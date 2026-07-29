@@ -150,7 +150,7 @@ export default function ContactPage() {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#F7931A]"
+                    className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#FFFFFF]"
                   />
                 </label>
 
@@ -163,7 +163,7 @@ export default function ContactPage() {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#F7931A]"
+                    className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#FFFFFF]"
                   />
                 </label>
               </div>
@@ -177,7 +177,7 @@ export default function ContactPage() {
                   required
                   value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#F7931A]"
+                  className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#FFFFFF]"
                 />
               </label>
 
@@ -190,7 +190,7 @@ export default function ContactPage() {
                   required
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="mt-3 w-full resize-none border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#F7931A]"
+                  className="mt-3 w-full resize-none border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#FFFFFF]"
                 />
               </label>
 

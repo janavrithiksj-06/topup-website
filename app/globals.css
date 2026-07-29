@@ -12,6 +12,33 @@
   --font-mono: var(--font-geist-mono);
 }
 
+.energy{
+    background:
+      linear-gradient(
+        110deg,
+        transparent 0%,
+        transparent 15%,
+
+        rgba(26,115,232,.08) 25%,
+        rgba(79,195,247,.45) 35%,
+        rgba(26,115,232,.10) 45%,
+
+        transparent 55%,
+        transparent 100%
+      );
+
+    animation: flow 3.2s linear infinite;
+}
+
+@keyframes flow{
+    from{
+        transform:translateX(-25%);
+    }
+    to{
+        transform:translateX(25%);
+    }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
