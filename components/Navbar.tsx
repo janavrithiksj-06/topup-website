@@ -1,185 +1,146 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { Menu, Zap } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+
+const LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/network", label: "Network" },
+  { href: "/partner", label: "Partner" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-const [mobileOpen, setMobileOpen] = useState(false);
-
-useEffect(() => {
-  let ticking = false;
-
-  const onScroll = () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 20);
-        ticking = false;
-      });
-
-      ticking = true;
-    }
-  };
-
-  window.addEventListener("scroll", onScroll);
-
-  return () => window.removeEventListener("scroll", onScroll);
-}, []);
-
-const glass = scrolled
-  ? "bg-white/85 border-neutral-200 shadow-[0_10px_40px_rgba(0,0,0,.08)]"
-  : "bg-black/20 border-white/10 shadow-[0_10px_40px_rgba(0,0,0,.12)]";
+  const pathname = usePathname();
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-5 left-1/2 z-50 -translate-x-1/2 px-4 w-full">
-      <div className="mx-auto flex max-w-7xl items-center justify-center gap-4">
-
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, y: -25 }}
-          animate={{ opacity: 1, y: 0 }}
-         transition={{
-  duration: 0.35,
-  ease: "easeOut",
-}}
-        >
-          <Link
-            href="/"
-            className={`flex h-12.5 items-center rounded-xl border px-4 backdrop-blur-md transition-colors duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_40px_rgba(0,0,0,.15)] ${glass}`}
-          >
-<img
-  src={scrolled ? "/images/logo-dark.png" : "/images/logo2.png"}
-  alt="Topup"
-  className="h-7 w-auto transition-all duration-300"
-/>
-          </Link>
-        </motion.div>
-
-        {/* Navigation */}
-        <motion.nav
-          initial={{ opacity: 0, y: -25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-  duration: 0.35,
-  ease: "easeOut",
-}}
-          className={`hidden lg:flex h-12.5 items-center rounded-xl border px-8 backdrop-blur-md transition-colors duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_40px_rgba(0,0,0,.15)] ${glass}`}
-        >
-          <div
-            className={`flex items-center gap-8 font-semibold text-[15px] ${
-              scrolled ? "text-neutral-700" : "text-white"
-            }`}
-          >
-            <Link
-              href="/"
-              className="transition hover:text-[#F7931A]"
-            >
-              Home
-            </Link>
-
-            <Link
-              href="/network"
-              className="transition hover:text-[#F7931A]"
-            >
-              Network
-            </Link>
-
-            <Link
-              href="/partner"
-              className="transition hover:text-[#F7931A]"
-            >
-              Partner
-            </Link>
-
-            <Link
-              href="/contact"
-              className="transition hover:text-[#F7931A]"
-            >
-              Contact
-            </Link>
-          </div>
-        </motion.nav>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{
-  duration: 0.35,
-  ease: "easeOut",
-}}
-          className="hidden lg:block pt-1"
-        >
-          <Link
-            href="/network"
-            className="group flex h-12.5 items-center gap-2 rounded-xl bg-[#F7931A] px-7 font-semibold text-white shadow-xl transition-colors duration-300 hover:scale-[1.01] hover:scale-[1.01]
-hover:shadow-lg
-hover:bg-[#FFAA33]
-active:scale-95 hover:bg-[#ffa726]"
-          >
-            <Zap
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-            Find Charger
-          </Link>
-        </motion.div>
-
-        {/* Mobile */}
-        <button
-  onClick={() => setMobileOpen(!mobileOpen)}
-  className={`lg:hidden flex h-14 w-14 items-center justify-center rounded-xl border backdrop-blur-xl ${glass}`}
->
-  <Menu className={scrolled ? "text-black" : "text-white"} />
-</button>
-      </div>
-      {mobileOpen && (
-  <div className="fixed inset-0 z-40 bg-black/50 lg:hidden">
-    <div className="absolute right-4 top-24 w-64 rounded-2xl border border-white/10 bg-neutral-900 p-6 shadow-2xl">
-      <div className="flex flex-col gap-5">
-
+    <header className="fixed inset-x-0 top-6 z-50 px-6 md:px-10">
+      <div className="relative mx-auto flex max-w-[1400px] items-center justify-between">
+        {/* Logo, pinned left. mix-blend-mode doesn't reliably blend against
+            content scrolling under a position:fixed element in Chromium, so
+            instead the logo sits on its own small dark chip — it's never
+            touching a light background directly, on any page. */}
         <Link
           href="/"
-          onClick={() => setMobileOpen(false)}
+          className="relative z-10 flex items-center rounded-full bg-[#111111]/90 px-4 py-2 backdrop-blur-md"
         >
-          Home
+          <img src="/images/logo2.png" alt="Topup" className="h-6 w-auto" />
         </Link>
 
-        <Link
-          href="/network"
-          onClick={() => setMobileOpen(false)}
+        {/* Nav pill, centered independently of logo/CTA width */}
+        <nav
+          onMouseLeave={() => setHovered(null)}
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full bg-[#242424] p-1 lg:flex"
         >
-          Network
-        </Link>
+          {LINKS.map((link) => {
+            const isActive = link.href === pathname;
+            const isHovered = hovered === link.href;
 
-        <Link
-          href="/partner"
-          onClick={() => setMobileOpen(false)}
-        >
-          Partner
-        </Link>
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onMouseEnter={() => setHovered(link.href)}
+                className="relative rounded-full px-5 py-2.5 text-[14px] font-medium"
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="active-pill"
+                    className="absolute inset-0 rounded-full bg-[#F8F8F5]"
+                    transition={{ type: "spring", stiffness: 500, damping: 34 }}
+                  />
+                )}
+                {!isActive && isHovered && (
+                  <motion.span
+                    layoutId="hover-pill"
+                    className="absolute inset-0 rounded-full bg-white/10"
+                    transition={{ type: "spring", stiffness: 500, damping: 34 }}
+                  />
+                )}
+                <span
+                  className={`relative z-10 ${
+                    isActive ? "text-[#111111]" : "text-[#F8F8F5]"
+                  }`}
+                >
+                  {link.label}
+                </span>
+              </Link>
+            );
+          })}
+        </nav>
 
-        <Link
-          href="/contact"
-          onClick={() => setMobileOpen(false)}
-        >
-          Contact
-        </Link>
-
-        <Link
-          href="/network"
-          onClick={() => setMobileOpen(false)}
-          className="mt-2 rounded-full bg-[#F7931A] px-5 py-3 text-center font-semibold text-black"
+        {/* CTA, pinned right */}
+       <Link
+            href="/network"
+          className="hidden rounded-full bg-[#F7931A] px-6 py-2.5 text-[14px] font-semibold text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5] lg:block"
         >
           Find Charger
         </Link>
 
+        {/* Mobile menu toggle */}
+        <button
+          onClick={() => setMobileOpen(true)}
+          className="text-[#F8F8F5] lg:hidden"
+          aria-label="Open menu"
+        >
+          <Menu size={22} strokeWidth={1.5} />
+        </button>
       </div>
-    </div>
-  </div>
-)}
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 top-0 z-50 bg-[#111111] lg:hidden"
+          >
+            <div className="flex h-20 items-center justify-between px-6">
+              <img src="/images/logo2.png" alt="Topup" className="h-6 w-auto" />
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="text-[#F8F8F5]"
+                aria-label="Close menu"
+              >
+                <X size={22} strokeWidth={1.5} />
+              </button>
+            </div>
+
+            <nav className="mt-16 flex flex-col gap-8 px-8">
+              {LINKS.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * i, duration: 0.4 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-3xl font-medium tracking-[-0.01em] text-[#F8F8F5]"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <Link
+            href="/network"
+                onClick={() => setMobileOpen(false)}
+                className="mt-4 w-fit rounded-full bg-[#F7931A] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111]"
+              >
+                Find Charger
+              </Link>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
