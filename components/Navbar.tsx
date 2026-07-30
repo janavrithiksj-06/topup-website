@@ -9,6 +9,7 @@ import { MapPin, ArrowRight } from "lucide-react";
 
 const LINKS = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/network", label: "Network" },
   { href: "/partner", label: "Partner" },
   { href: "/contact", label: "Contact" },
@@ -31,7 +32,7 @@ export default function Navbar() {
   className="relative z-10 block"
 >
   <img
-    src="/images/logo7.png"
+    src="/images/logo.png"
     alt="TopUp"
     className="h-16 w-auto"
   />
@@ -177,7 +178,7 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
           >
             <div className="flex h-20 items-center justify-between px-6">
               <img
-  src="/images/logo7.png"
+  src="/images/logo.png"
   alt="TopUp"
   className="h-10 w-auto"
 />

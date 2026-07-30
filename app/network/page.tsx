@@ -1,53 +1,100 @@
 import FakeMap from "@/components/network/FakeMap";
-import NotifyForm from "@/components/network/NotifyForm";
 import PartnerCTA from "@/components/network/PartnerCTA";
+import FadeIn from "@/components/FadeIn";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Find EV Charging Stations",
+  description:
+    "Locate EV charging stations across India with Topup. Discover fast chargers, upcoming locations, and stay powered wherever you travel.",
+};
 
 export default function NetworkPage() {
   return (
-    <main className="min-h-screen bg-[#161B22] text-[#F8FAFC]">
+    <main className="min-h-screen overflow-hidden bg-[#EEF2F6] text-[#111827]">
+
+      {/* Background Glow */}
+      <div className="absolute -left-32 top-20 h-[500px] w-[500px] rounded-full bg-blue-200/30 blur-[140px]" />
+      <div className="absolute right-0 top-[420px] h-[420px] w-[420px] rounded-full bg-slate-300/30 blur-[120px]" />
+
       {/* Hero */}
-      <section className="mx-auto flex max-w-[1400px] flex-col px-6 pt-40 pb-16 md:px-10">
-        <p className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-[#1A73E8]">
-          Topup Network
-        </p>
+      <section className="relative mx-auto flex max-w-[1400px] flex-col px-6 pb-20 pt-40 md:px-10">
 
-        <h1 className="max-w-4xl text-5xl font-medium leading-[0.95] tracking-[-0.02em] md:text-7xl">
-          Powering India&apos;s
-          <br />
-          next generation of mobility.
-        </h1>
+        <FadeIn>
 
-        <p className="mt-8 max-w-2xl text-[17px] leading-8 text-[#C4CDD8]">
-          A premium charging network built for reliability, speed, and
-          seamless EV travel. First locations launching soon across South
-          India.
-        </p>
+          <p className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-[#1A73E8]">
+            Topup Network
+          </p>
+
+          <h1 className="max-w-5xl text-5xl font-medium leading-[0.94] tracking-[-0.03em] md:text-7xl">
+            Powering India's
+            <br />
+            next generation
+            <br />
+            of mobility.
+          </h1>
+
+          <p className="mt-10 max-w-2xl text-[18px] leading-8 text-[#5F6B7A]">
+            A growing network of reliable fast chargers designed for highways,
+            cities and everyday travel. The first Topup locations are launching
+            soon across South India.
+          </p>
+
+        </FadeIn>
+
       </section>
 
       {/* Map */}
-      <section className="mx-auto max-w-[1400px] px-6 pb-16 md:px-10">
-        <div className="relative overflow-hidden rounded-2xl border border-[#313B49] bg-[#1E2530]">
-          <FakeMap />
 
-          <div className="pointer-events-none absolute left-6 top-6 max-w-sm rounded-xl border border-[#313B49] bg-[#252D3A]/90 p-7 backdrop-blur-md md:left-8 md:top-8">
-            <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#1A73E8]">
-              Coming Soon
-            </p>
+      <section className="relative mx-auto max-w-[1400px] px-6 pb-28 md:px-10">
 
-            <h2 className="mt-3 text-xl font-medium tracking-[-0.01em] text-[#F8FAFC]">
-              Charging network launching soon.
-            </h2>
+        <FadeIn>
 
-            <p className="mt-3 text-[14px] leading-6 text-[#C4CDD8]">
-              Topup locations will open across highways, cities, commercial
-              destinations, and hospitality partners.
-            </p>
+          <div className="relative overflow-hidden rounded-[32px] border border-[#D7DEE7] bg-white shadow-[0_25px_70px_rgba(15,23,42,0.08)]">
+
+            <FakeMap />
+
+            {/* Floating Card */}
+
+            <div className="absolute left-6 top-6 max-w-sm rounded-3xl border border-white/60 bg-white/85 p-8 shadow-xl backdrop-blur-xl md:left-10 md:top-10">
+
+              <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
+                Coming Soon
+              </p>
+
+              <h2 className="mt-4 text-2xl font-medium leading-tight">
+                Our network
+                <br />
+                is just getting started.
+              </h2>
+
+              <p className="mt-4 text-[15px] leading-7 text-[#5F6B7A]">
+                Topup charging stations will open across highways, commercial
+                destinations, hospitality partners and urban mobility hubs.
+              </p>
+
+              <div className="mt-8 h-px bg-[#D7DEE7]" />
+
+              <div className="mt-6 flex items-center gap-3">
+
+                <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse" />
+
+                <span className="text-sm text-[#5F6B7A]">
+                  First locations launching soon
+                </span>
+
+              </div>
+
+            </div>
+
           </div>
-        </div>
+
+        </FadeIn>
+
       </section>
 
-      {/* CTA */}
       <PartnerCTA />
+
     </main>
   );
 }

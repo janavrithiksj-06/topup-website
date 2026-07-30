@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
   title: {
     default: "Topup | EV Charging Network in India",
-    template: "%s | Topup",
+    template: "%s | Topup EV Charging",
   },
 
   description:

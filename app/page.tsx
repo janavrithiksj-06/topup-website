@@ -4,6 +4,13 @@ import Showcase from "@/components/Showcase";
 import Numbers from "@/components/Numbers";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "EV Charging Network in India",
+  description:
+    "Discover Topup's fast and reliable EV charging network across India. Find charging stations, power your journeys, and join the future of electric mobility.",
+};
 
 export default function Home() {
   return (

@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#0B1220] scroll-mt-28"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#162030] scroll-mt-28"
     >
       <div className="absolute inset-0">
       <video
@@ -25,7 +25,12 @@ export default function Hero() {
   <source src="/videos/hero.mp4" type="video/mp4" />
 </video>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220] via-[#0B1220]/70 to-transparent" />
+<div className="absolute left-[-10%] top-[10%] h-[500px] w-[500px] rounded-full bg-[#3B82F6]
+hover:bg-[#60A5FA]/15 blur-[160px]" />
+
+<div className="absolute right-[-10%] bottom-[-10%] h-[450px] w-[450px] rounded-full bg-cyan-400/10 blur-[160px]" />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-[#162030]/95 via-[#162030]/65 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 py-32 md:px-10">
@@ -33,7 +38,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-[#E5E7EB]"
+          className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-slate-200"
         >
           Launching 2026 — Tamil Nadu · Karnataka
         </motion.p>
@@ -65,7 +70,8 @@ export default function Hero() {
         >
           <Link
             href="/network"
-            className="bg-[#2563EB] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8FAFC] transition-all duration-300 hover:bg-[#F8FAFC] hover:text-[#0B1220]"
+            className="bg-[#3B82F6]
+hover:bg-[#60A5FA] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8FAFC] transition-all duration-300 hover:bg-[#F8FAFC] hover:text-[#0B1220]"
           >
             Find Charger
           </Link>
@@ -87,7 +93,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.9 }}
-        className="absolute bottom-8 right-6 hidden items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-[#E5E7EB]/60 md:right-10 md:flex"
+        className="absolute bottom-8 right-6 hidden items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-slate-300/70 md:right-10 md:flex"
       >
         <span className="h-8 w-px bg-[#E5E7EB]/30" />
         Scroll
