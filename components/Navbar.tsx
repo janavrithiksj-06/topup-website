@@ -89,7 +89,7 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
     hidden
     overflow-hidden
     rounded-full
-    px-7
+    px-4
     py-3
     lg:flex
     items-center
@@ -126,9 +126,9 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
       className="transition duration-300 group-hover:scale-110"
     />
 
-    <span className="font-semibold">
-      Find Charger
-    </span>
+    <span className="text-sm font-semibold">
+  Find Charger
+</span>
 
     <ArrowRight
       size={16}
