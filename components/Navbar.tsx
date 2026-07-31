@@ -86,55 +86,42 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
   href="/network"
   className="
     group
-    relative
     hidden
-    overflow-hidden
-    rounded-full
-    px-4
-    py-3
     lg:flex
     items-center
-    justify-center
+    gap-2
 
-    bg-[#0B1220]
-    border border-[#1E3A5F]
-    shadow-[0_10px_30px_rgba(0,0,0,.35)]
+    rounded-full
+    bg-white
+    border border-gray-200
 
-    transition-all
-    duration-500
+    px-1.5
+    py-1
 
-    hover:-translate-y-1
-    hover:shadow-[0_15px_45px_rgba(26,115,232,.35)]
+    shadow-md
+    transition-all duration-300
+    hover:-translate-y-0.5
   "
 >
-  {/* flowing energy */}
-  <div className="absolute inset-0 overflow-hidden rounded-full">
+  <div className="flex items-center gap-1 pl-1.5">
+    <MapPin size={15} className="text-[#2563EB]" />
 
-    <div className="absolute inset-0 bg-[#0B1220]" />
-
-    <div className="energy absolute -left-1/2 top-0 h-full w-[200%]" />
-
-    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
-
+    <span className="text-[14px] font-medium text-[#111827]">
+      Find Charger
+    </span>
   </div>
 
-  {/* glow */}
-  <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 bg-[radial-gradient(circle,rgba(79,195,247,.25),transparent_70%)]"/>
-
-  <div className="relative z-10 flex items-center gap-2 text-white">
-    <MapPin
-      size={16}
-      className="transition duration-300 group-hover:scale-110"
-    />
-
-    <span className="text-sm font-semibold">
-  Find Charger
-</span>
-
-    <ArrowRight
-      size={16}
-      className="transition duration-300 group-hover:translate-x-1"
-    />
+  <div
+    className="
+      flex h-8 w-8 items-center justify-center
+      rounded-full
+      bg-[#2563EB]
+      text-white
+      transition-transform duration-300
+      group-hover:translate-x-0.5
+    "
+  >
+    <ArrowRight size={15} />
   </div>
 </Link>
 
@@ -158,7 +145,9 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
     text-[#F8F8F5]
     backdrop-blur-xl
     shadow-[0_8px_24px_rgba(0,0,0,0.25)]
-    transition-all duration-300
+   transition-[transform,box-shadow,border-color,background-color]
+duration-300
+ease-[cubic-bezier(.22,1,.36,1)]
     hover:bg-[#242424]/80
     hover:scale-105
   "
