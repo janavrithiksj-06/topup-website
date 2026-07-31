@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -18,7 +17,6 @@ export default function Hero() {
   loop
   playsInline
   preload="auto"
-  poster="/images/hero-poster.jpg"
   className="absolute inset-0 h-full w-full object-cover"
 >
   <source src="/videos/hero.webm" type="video/webm" />
@@ -26,9 +24,9 @@ export default function Hero() {
 </video>
 
 <div className="absolute left-[-10%] top-[10%] h-[500px] w-[500px] rounded-full bg-[#3B82F6]
-hover:bg-[#60A5FA]/15 blur-[160px]" />
+hover:bg-[#60A5FA]/15 blur-[100px]" />
 
-<div className="absolute right-[-10%] bottom-[-10%] h-[450px] w-[450px] rounded-full bg-cyan-400/10 blur-[160px]" />
+<div className="absolute right-[-10%] bottom-[-10%] h-[450px] w-[450px] rounded-full bg-cyan-400/10 blur-[100px]" />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#162030]/95 via-[#162030]/65 to-transparent" />
       </div>

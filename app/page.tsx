@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import WhyTopup from "@/components/WhyTopup";
 import Showcase from "@/components/Showcase";
-import Numbers from "@/components/Numbers";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
@@ -18,7 +17,6 @@ export default function Home() {
       <Hero />
       <WhyTopup />
       <Showcase />
-      <Numbers />
       <CTA />
       <Footer />
     </main>

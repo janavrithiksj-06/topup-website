@@ -76,30 +76,7 @@ export default function BuiltForTheRoad() {
             ))}
           </div>
 
-          {/* Bottom statement */}
-          <div className="mt-28 border-t border-[#DDD5C8] pt-12">
-            <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-              <div>
-                <p className="text-3xl font-medium leading-relaxed">
-                  Less waiting.
-                  <br />
-                  More driving.
-                </p>
 
-                <p className="mt-4 text-neutral-500">
-                  That's the experience we're building.
-                </p>
-              </div>
-
-              <Link
-                href="/network"
-                className="group inline-flex items-center gap-3 rounded-full border border-black px-6 py-3 text-sm font-medium transition-all duration-300 hover:bg-black hover:text-white"
-              >
-                Explore Network
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
     </FadeIn>
