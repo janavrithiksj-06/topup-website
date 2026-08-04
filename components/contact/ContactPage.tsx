@@ -92,7 +92,7 @@ export default function ContactPage() {
                   <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
                     Email
                   </p>
-                  <p className="mt-1.5 text-[15px]">contact.sjrventures@gmail.com</p>
+                  <p className="mt-1.5 text-[15px]">hello@topupchargers.com</p>
                 </div>
               </div>
 
