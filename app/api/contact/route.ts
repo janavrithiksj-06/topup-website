@@ -8,8 +8,8 @@ export async function POST(req: Request) {
     const { name, email, subject, message } = await req.json();
 
     const { error } = await resend.emails.send({
-      from: "Topup <onboarding@resend.dev>",
-      to: "contact.sjrventures@gmail.com",
+      from: "Topup <hello@topupchargers.com>",
+      to: "hello@topupchargers.com",
       replyTo: email,
       subject: `[Topup] ${subject}`,
       html: `
@@ -30,10 +30,14 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json(
-      { error: "Something went wrong." },
-      { status: 500 }
-    );
-  }
+  } catch (err) {
+  console.error("Contact API error:", err);
+
+  return NextResponse.json(
+    {
+      error: err instanceof Error ? err.message : "Unknown error",
+    },
+    { status: 500 }
+  );
+}
 }
