@@ -15,11 +15,13 @@ export const metadata: Metadata = {
 
   title: {
     default: "Topup | EV Charging Network in India",
-    template: "%s | Topup EV Charging",
+    template: "%s | Topup",
   },
 
   description:
-    "Topup is building India's next-generation EV charging network. Find fast chargers, discover charging locations, and power your electric journeys with confidence.",
+    "Topup is building India's next-generation EV charging network with reliable DC fast charging infrastructure. Find charging stations, partner with us, and power your electric journey.",
+
+  applicationName: "Topup",
 
   keywords: [
     "Topup",
@@ -27,77 +29,111 @@ export const metadata: Metadata = {
     "EV charging station",
     "EV chargers India",
     "Electric vehicle charging",
-    "Fast charging",
     "DC fast charger",
-    "EV charging network",
-    "Charging stations India",
     "CCS2 charger",
-    "Electric car charger",
+    "Fast EV charger",
+    "EV charging network India",
+    "Electric car charging",
+    "EV infrastructure",
+    "Charging station near me",
+    "Topup Chargers",
   ],
-
-  applicationName: "Topup",
 
   authors: [
     {
       name: "Topup",
+      url: "https://topupchargers.com",
     },
   ],
 
   creator: "Topup",
-
   publisher: "Topup",
 
   category: "Technology",
 
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+
+  alternates: {
+    canonical: "/",
+  },
+
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-image-preview": "large",
       "max-video-preview": -1,
       "max-snippet": -1,
     },
   },
 
-  alternates: {
-    canonical: "https://topupchargers.com",
-  },
-
   openGraph: {
     type: "website",
+    locale: "en_IN",
     url: "https://topupchargers.com",
     siteName: "Topup",
-    title: "Topup | EV Charging Network in India",
-    description:
-      "Discover fast, reliable EV charging across India. Topup is building the future of electric mobility.",
 
-    locale: "en_IN",
+    title: "Topup | EV Charging Network in India",
+
+    description:
+      "Powering India's electric future with reliable DC fast charging infrastructure.",
 
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Topup EV Charging",
+        alt: "Topup EV Charging Network",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
+
     title: "Topup | EV Charging Network",
+
     description:
-      "Powering India's electric future with a reliable EV charging network.",
+      "Reliable DC fast charging infrastructure for India's electric future.",
+
+    creator: "@topup", // Change when your X account exists
 
     images: ["/og-image.jpg"],
   },
 
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+  verification: {
+    google: "YOUR_GOOGLE_SEARCH_CONSOLE_CODE",
+    // bing: "YOUR_BING_CODE",
   },
+
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Topup",
+  },
+
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+
+    apple: "/apple-touch-icon.png",
+
+    shortcut: "/favicon.ico",
+  },
+
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -106,7 +142,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
      <body className={`${geist.className} bg-[#F7F7F5] text-neutral-900`}>
   <StructuredData />
   <Navbar />

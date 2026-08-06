@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Topup | EV Charging Network in India",
   description:
-    "Learn why Topup exists and how we're building a reliable EV charging network across India.",
+  "Learn about Topup, our mission to build a reliable DC fast EV charging network across India, and how we're making electric mobility more accessible.",
 };
 
 export default function AboutPage() {
@@ -21,15 +21,13 @@ export default function AboutPage() {
         </p>
 
         <h1 className="max-w-5xl text-5xl font-medium leading-[0.94] tracking-[-0.03em] md:text-7xl">
-          Charging should feel
+          EV charging should
           <br />
-          effortless.
+          feel effortless.
         </h1>
 
         <p className="mt-10 max-w-2xl text-[18px] leading-8 text-[#5B6472]">
-          We believe people shouldn't have to think twice about driving an
-          electric vehicle. The best charging experience is the one that simply
-          works—quietly, reliably, every single time.
+          At Topup, we believe people shouldn't have to think twice about driving an electric vehicle. We're building a reliable network of DC fast charging stations across India so every journey feels simple, dependable, and effortless.
         </p>
 
       </section>
@@ -43,7 +41,7 @@ export default function AboutPage() {
           {/* Replace this image later */}
           <Image
             src="/images/about-hero.jpg"
-            alt="Topup EV charging"
+            alt="Topup DC fast EV charging station in India"
             fill
             className="object-cover"
             priority
@@ -329,7 +327,25 @@ export default function AboutPage() {
         </div>
 
       </section>
-
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      name: "About Topup",
+      url: "https://topupchargers.com/about",
+      description:
+        "Learn about Topup and our mission to build India's next-generation EV charging network.",
+      isPartOf: {
+        "@id": "https://topupchargers.com/#website",
+      },
+      about: {
+        "@id": "https://topupchargers.com/#organization",
+      },
+    }),
+  }}
+/>
     </main>
   );
 }

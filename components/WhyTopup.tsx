@@ -1,34 +1,35 @@
 import FadeIn from "./FadeIn";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 const STEPS = [
   {
     number: "01",
-    title: "Find",
-    text: "See what's available before you leave. No unnecessary detours.",
+    title: "Find a Charger",
+    text: "Locate nearby Topup DC fast charging stations before you begin your journey.",
   },
   {
     number: "02",
     title: "Plug In",
-    text: "Fast, reliable charging designed to get you moving again.",
+    text: "Connect your electric vehicle to a compatible CCS2 DC fast charger and start charging.",
   },
   {
     number: "03",
-    title: "Take Five",
-    text: "Grab a coffee, stretch your legs, or simply enjoy the pause.",
+    title: "Recharge",
+    text: "Take a short break while your EV charges safely, efficiently, and reliably.",
   },
   {
     number: "04",
     title: "Drive On",
-    text: "Recharge your car and continue your journey with confidence.",
+    text: "Get back on the road with confidence and continue your journey with a fully charged EV.",
   },
 ];
 
 export default function BuiltForTheRoad() {
   return (
     <FadeIn>
-      <section className="relative overflow-hidden bg-[#F6F2EA] text-[#111111]">
+      <section
+        className="relative overflow-hidden bg-[#F6F2EA] text-[#111111]"
+        aria-labelledby="why-topup-heading"
+      >
         {/* Subtle glow */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute left-1/2 top-[-220px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#B89B5E]/10 blur-3xl" />
@@ -37,30 +38,38 @@ export default function BuiltForTheRoad() {
         <div className="relative mx-auto max-w-7xl px-8 py-36">
           {/* Label */}
           <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#A88A4A]">
-            Built for the Road
+            Reliable DC Fast Charging
           </p>
 
           {/* Heading */}
-          <h2 className="mt-8 max-w-5xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">
-            One good stop.
+          <h2
+            id="why-topup-heading"
+            className="mt-8 max-w-5xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl"
+          >
+            Reliable EV charging,
             <br />
-            That's all your
+            designed for every
             <br />
-            journey should need.
+            journey.
           </h2>
 
+          {/* Description */}
           <p className="mt-8 max-w-2xl text-xl leading-9 text-neutral-600">
-            Charging shouldn't interrupt the drive. It should simply become
-            part of it.
+            Topup is building a reliable network of DC fast charging stations
+            across India, helping electric vehicle drivers charge faster, travel
+            farther, and enjoy a seamless charging experience.
           </p>
 
           {/* Divider */}
           <div className="my-24 h-px bg-[#DDD5C8]" />
 
           {/* Steps */}
-          <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-4">
+          <div
+            className="grid gap-12 md:grid-cols-2 xl:grid-cols-4"
+            role="list"
+          >
             {STEPS.map((step) => (
-              <div key={step.number} className="group">
+              <article key={step.number} className="group">
                 <p className="text-6xl font-light text-[#C8BA98] transition duration-300 group-hover:text-[#A88A4A]">
                   {step.number}
                 </p>
@@ -72,11 +81,9 @@ export default function BuiltForTheRoad() {
                 <p className="mt-4 leading-8 text-neutral-600">
                   {step.text}
                 </p>
-              </div>
+              </article>
             ))}
           </div>
-
-
         </div>
       </section>
     </FadeIn>

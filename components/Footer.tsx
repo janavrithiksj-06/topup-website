@@ -24,32 +24,71 @@ export default function Footer() {
             </div>
 
             <nav className="flex flex-wrap gap-8 text-[15px] font-medium text-[#6B7280]">
-             <Link href="/network" className="transition hover:text-[#111111]">
-  Network
-</Link>
+              <Link
+                href="/network"
+                className="transition hover:text-[#111111]"
+              >
+                Network
+              </Link>
 
-<Link href="/partner" className="transition hover:text-[#111111]">
-  Partner
-</Link>
+              <Link
+                href="/partner"
+                className="transition hover:text-[#111111]"
+              >
+                Partner
+              </Link>
 
-<Link href="/partner" className="transition hover:text-[#111111]">
-  About
-</Link>
+              <Link
+                href="/about"
+                className="transition hover:text-[#111111]"
+              >
+                About
+              </Link>
 
-<Link href="/contact" className="transition hover:text-[#111111]">
-  Contact
-</Link>
+              <Link
+                href="/contact"
+                className="transition hover:text-[#111111]"
+              >
+                Contact
+              </Link>
             </nav>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm md:flex-row md:items-center md:justify-between">
-          <p className="text-white/50">© 2026 TopUp</p>
+        <div className="mt-8 border-t border-white/10 pt-6">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <p className="text-sm text-white/50">
+              © 2026 TopUp. All rights reserved.
+            </p>
 
-          <p className="uppercase tracking-[0.3em] text-white/40">
-            Designed and engineered in India 🇮🇳
-          </p>
+            <div className="flex flex-wrap items-center gap-6 text-sm text-white/50">
+              <Link
+                href="/privacy-policy"
+                className="transition hover:text-[#2563EB]"
+              >
+                Privacy Policy
+              </Link>
+
+              <Link
+                href="/terms-and-conditions"
+                className="transition hover:text-[#2563EB]"
+              >
+                Terms & Conditions
+              </Link>
+
+              <Link
+                href="/faq"
+                className="transition hover:text-[#2563EB]"
+              >
+                FAQ
+              </Link>
+            </div>
+
+            <p className="uppercase tracking-[0.3em] text-white/40">
+              Designed and engineered in India 🇮🇳
+            </p>
+          </div>
         </div>
       </div>
     </footer>

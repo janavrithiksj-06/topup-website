@@ -12,14 +12,15 @@ export default function Hero() {
     >
       {/* Background */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover"
-        >
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  aria-hidden="true"
+  className="absolute inset-0 h-full w-full object-cover"
+>
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
@@ -65,7 +66,7 @@ export default function Hero() {
           "
         />
 
-        {/* Dark Gradient Overlay */}
+        {/* Overlay */}
         <div
           className="
             absolute inset-0
@@ -92,23 +93,40 @@ export default function Hero() {
           }}
           className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-slate-200 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
         >
-          Launching 2026 — Tamil Nadu · Karnataka
+          Launching 2026 • DC Fast Charging • Tamil Nadu & Karnataka
         </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1,
-            delay: 0.1,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="max-w-3xl text-6xl font-medium leading-[0.92] tracking-[-0.03em] text-[#F8FAFC] drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)] sm:text-7xl md:text-8xl lg:text-9xl"
-        >
-          Charge fast.
-          <br />
-          <span className="text-[#2563EB]">Drive further.</span>
-        </motion.h1>
+       <motion.h1
+  initial={{ opacity: 0, y: 24 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 1,
+    delay: 0.1,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="max-w-3xl text-6xl font-medium leading-[0.92] tracking-[-0.03em] text-[#F8FAFC] drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)] sm:text-7xl md:text-8xl lg:text-9xl"
+>
+  Charge fast.
+  <br />
+  <span className="text-[#2563EB]">Drive further.</span>
+</motion.h1>
+
+<motion.p
+  initial={{ opacity: 0, y: 18 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.9,
+    delay: 0.25,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl"
+>
+  <span className="font-semibold text-white">Topup</span> is building India's
+  next-generation <span className="font-semibold text-white">EV charging
+  network</span> with reliable{" "}
+  <span className="font-semibold text-white">DC fast chargers</span>,
+  delivering seamless charging experiences for electric vehicles across India.
+</motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -120,23 +138,25 @@ export default function Hero() {
           }}
           className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-5"
         >
-          <Link
-            href="/network"
-            className="bg-[#3B82F6] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8FAFC] transition-all duration-300 hover:bg-[#60A5FA]"
-          >
-            Find Charger
-          </Link>
+<Link
+  href="/network"
+  aria-label="Find EV charging stations"
+  className="bg-[#3B82F6] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8FAFC] transition-all duration-300 hover:bg-[#60A5FA]"
+>
+  Find Charger
+</Link>
 
-          <Link
-            href="/partner"
-            className="group flex items-center gap-2 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8FAFC] transition-colors duration-300 hover:text-[#60A5FA]"
-          >
-            Partner With Us
-            <ArrowRight
-              size={14}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </Link>
+<Link
+  href="/partner"
+  aria-label="Partner with Topup"
+  className="group flex items-center gap-2 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8FAFC] transition-colors duration-300 hover:text-[#60A5FA]"
+>
+  Partner With Us
+  <ArrowRight
+    size={14}
+    className="transition-transform duration-300 group-hover:translate-x-1"
+  />
+</Link>
         </motion.div>
       </div>
 
