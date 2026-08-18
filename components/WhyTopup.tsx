@@ -3,23 +3,23 @@ import FadeIn from "./FadeIn";
 const STEPS = [
   {
     number: "01",
-    title: "Find a Charger",
-    text: "Locate nearby Topup DC fast charging stations before you begin your journey.",
+    title: "Find",
+    text: "Locate a Topup charging station along your route.",
   },
   {
     number: "02",
-    title: "Plug In",
-    text: "Connect your electric vehicle to a compatible CCS2 DC fast charger and start charging.",
+    title: "Plug in",
+    text: "Connect to a high-speed CCS2 DC fast charger.",
   },
   {
     number: "03",
     title: "Recharge",
-    text: "Take a short break while your EV charges safely, efficiently, and reliably.",
+    text: "Take a break while your EV gets back to full power.",
   },
   {
     number: "04",
-    title: "Drive On",
-    text: "Get back on the road with confidence and continue your journey with a fully charged EV.",
+    title: "Drive on",
+    text: "Get back on the road and keep moving.",
   },
 ];
 
@@ -27,62 +27,216 @@ export default function BuiltForTheRoad() {
   return (
     <FadeIn>
       <section
-        className="relative overflow-hidden bg-[#F6F2EA] text-[#111111]"
+        data-navbar-theme="light"
+        className="relative overflow-hidden bg-[#F5F5F2] text-[#111111]"
         aria-labelledby="why-topup-heading"
       >
-        {/* Subtle glow */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/2 top-[-220px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#B89B5E]/10 blur-3xl" />
-        </div>
+        {/* =====================================================
+            SUBTLE BACKGROUND DETAIL
+        ===================================================== */}
 
-        <div className="relative mx-auto max-w-7xl px-8 py-36">
-          {/* Label */}
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#A88A4A]">
-            Reliable DC Fast Charging
-          </p>
+        <div
+          aria-hidden="true"
+          className="
+            absolute
+            right-[-180px]
+            top-[-180px]
+            h-[500px]
+            w-[500px]
+            rounded-full
+            border
+            border-black/[0.035]
+          "
+        />
 
-          {/* Heading */}
-          <h2
-            id="why-topup-heading"
-            className="mt-8 max-w-5xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl"
-          >
-            Reliable EV charging,
-            <br />
-            designed for every
-            <br />
-            journey.
-          </h2>
+        <div
+          aria-hidden="true"
+          className="
+            absolute
+            right-[-100px]
+            top-[-100px]
+            h-[340px]
+            w-[340px]
+            rounded-full
+            border
+            border-black/[0.035]
+          "
+        />
 
-          {/* Description */}
-          <p className="mt-8 max-w-2xl text-xl leading-9 text-neutral-600">
-            Topup is building a reliable network of DC fast charging stations
-            across India, helping electric vehicle drivers charge faster, travel
-            farther, and enjoy a seamless charging experience.
-          </p>
+        <div className="relative mx-auto max-w-[1500px] px-6 py-28 md:px-10 md:py-36 lg:px-14">
 
-          {/* Divider */}
-          <div className="my-24 h-px bg-[#DDD5C8]" />
+          {/* =================================================
+              INTRO
+          ================================================= */}
 
-          {/* Steps */}
+          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24">
+
+            {/* Left */}
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#777777]">
+  The Topup experience
+</p>
+
+              <h2
+                id="why-topup-heading"
+                className="
+                  mt-8
+                  max-w-5xl
+                  text-[clamp(3.2rem,6vw,6.5rem)]
+                  font-medium
+                  leading-[0.88]
+                  tracking-[-0.065em]
+                "
+              >
+                Charging should
+                <br />
+                <span className="text-black/40">
+                  never slow you down.
+                </span>
+              </h2>
+            </div>
+
+            {/* Right */}
+            <div className="flex items-end lg:pb-2">
+              <div>
+                <p className="max-w-xl text-lg leading-8 text-black/55 md:text-xl">
+                  Topup is building a reliable network of DC fast charging
+                  stations across India, designed to make charging a natural
+                  part of every journey.
+                </p>
+
+                <div className="mt-8 h-px w-16 bg-[#FF8000]" />
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              DIVIDER
+          ================================================= */}
+
+          <div className="my-24 h-px bg-black/10 md:my-32" />
+
+          {/* =================================================
+              PROCESS HEADER
+          ================================================= */}
+
+          <div className="mb-14 flex items-end justify-between">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-black/35">
+                How it works
+              </p>
+
+              <h3 className="mt-4 text-3xl font-medium tracking-[-0.04em] md:text-4xl">
+                From plug in to drive on.
+              </h3>
+            </div>
+
+            <span className="hidden text-[10px] uppercase tracking-[0.25em] text-black/30 md:block">
+              01 — 04
+            </span>
+          </div>
+
+          {/* =================================================
+              STEPS
+          ================================================= */}
+
           <div
-            className="grid gap-12 md:grid-cols-2 xl:grid-cols-4"
+            className="
+              grid
+              border-l
+              border-t
+              border-black/10
+              md:grid-cols-2
+              xl:grid-cols-4
+            "
             role="list"
           >
-            {STEPS.map((step) => (
-              <article key={step.number} className="group">
-                <p className="text-6xl font-light text-[#C8BA98] transition duration-300 group-hover:text-[#A88A4A]">
-                  {step.number}
-                </p>
+            {STEPS.map((step, index) => (
+              <article
+                key={step.number}
+                className="
+                  group
+                  relative
+                  min-h-[300px]
+                  border-b
+                  border-r
+                  border-black/10
+                  p-7
+                  transition-colors
+                  duration-500
+                  hover:bg-white
+                  md:p-9
+                "
+              >
+                {/* Number */}
+                <div className="flex items-start justify-between">
+                  <span
+                    className="
+                      text-[13px]
+                      font-medium
+                      tracking-[0.15em]
+                      text-black/30
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#FF8000]
+                    "
+                  >
+                    {step.number}
+                  </span>
 
-                <h3 className="mt-6 text-3xl font-semibold">
-                  {step.title}
-                </h3>
+                </div>
 
-                <p className="mt-4 leading-8 text-neutral-600">
-                  {step.text}
-                </p>
+                {/* Content */}
+                <div className="mt-24">
+                  <h4
+                    className="
+                      text-3xl
+                      font-medium
+                      tracking-[-0.045em]
+                      md:text-4xl
+                    "
+                  >
+                    {step.title}
+                  </h4>
+
+                  <p className="mt-5 max-w-[260px] text-sm leading-7 text-black/50">
+                    {step.text}
+                  </p>
+                </div>
+
+                {/* Bottom index */}
+                <span
+                  className="
+                    absolute
+                    bottom-7
+                    right-7
+                    text-[9px]
+                    uppercase
+                    tracking-[0.25em]
+                    text-black/20
+                    md:bottom-9
+                    md:right-9
+                  "
+                >
+                  TOPUP
+                </span>
               </article>
             ))}
+          </div>
+
+          {/* =================================================
+              BOTTOM STATEMENT
+          ================================================= */}
+
+          <div className="mt-24 flex flex-col justify-between gap-8 border-t border-black/10 pt-8 md:flex-row md:items-center">
+            <p className="max-w-xl text-sm leading-7 text-black/45">
+              Fast charging infrastructure that fits into the journey,
+              rather than interrupting it.
+            </p>
+
+            <span className="text-[10px] uppercase tracking-[0.28em] text-black/30">
+              Built for the road ahead
+            </span>
           </div>
         </div>
       </section>

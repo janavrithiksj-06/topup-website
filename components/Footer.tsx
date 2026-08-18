@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
             <div className="max-w-xl">
               <Image
-                src="/images/logo6.png"
+                src="/images/logo3.png"
                 alt="TopUp"
                 width={180}
                 height={60}

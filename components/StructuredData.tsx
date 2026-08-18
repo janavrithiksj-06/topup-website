@@ -15,7 +15,7 @@ export default function StructuredData() {
         description:
           "Topup is building India's next-generation EV charging network with reliable DC fast charging infrastructure.",
 
-        logo: "https://topupchargers.com/logo.png",
+        logo: "https://topupchargers.com/logo4.png",
 
         image: "https://topupchargers.com/og-image.jpg",
 

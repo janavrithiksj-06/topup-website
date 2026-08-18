@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { MapPin, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X, MapPin, ArrowRight } from "lucide-react";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -17,31 +16,97 @@ const LINKS = [
 
 export default function Navbar() {
   const pathname = usePathname();
+
   const [hovered, setHovered] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [lightBackground, setLightBackground] = useState(false);
+
+  /*
+   * Detect the section underneath the navbar.
+   *
+   * Sections should use:
+   *
+   * data-navbar-theme="dark"
+   *
+   * or:
+   *
+   * data-navbar-theme="light"
+   */
+
+  useEffect(() => {
+    const updateNavbarTheme = () => {
+      const elements = document.elementsFromPoint(
+        window.innerWidth / 2,
+        105
+      );
+
+      const themedSection = elements.find(
+        (element) =>
+          element instanceof HTMLElement &&
+          element.dataset.navbarTheme
+      ) as HTMLElement | undefined;
+
+      setLightBackground(
+        themedSection?.dataset.navbarTheme === "light"
+      );
+    };
+
+    updateNavbarTheme();
+
+    window.addEventListener("scroll", updateNavbarTheme, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", updateNavbarTheme);
+
+    return () => {
+      window.removeEventListener("scroll", updateNavbarTheme);
+      window.removeEventListener("resize", updateNavbarTheme);
+    };
+  }, []);
 
   return (
     <header className="fixed inset-x-0 top-6 z-50 px-6 md:px-10">
       <div className="relative mx-auto flex max-w-[1500px] items-center justify-between">
-        {/* Logo, pinned left. mix-blend-mode doesn't reliably blend against
-            content scrolling under a position:fixed element in Chromium, so
-            instead the logo sits on its own small dark chip — it's never
-            touching a light background directly, on any page. */}
-<Link
-  href="/"
-  className="relative z-10 block"
->
-  <img
-    src="/images/logo.png"
-    alt="TopUp"
-    className="h-16 w-auto"
-  />
-</Link>
 
-        {/* Nav pill, centered independently of logo/CTA width */}
+        {/* =====================================================
+            LOGO
+        ===================================================== */}
+
+        <Link
+          href="/"
+          className="relative z-10 block"
+          aria-label="TopUp home"
+        >
+          <img
+            src={
+              lightBackground
+                ? "/images/logo3.png"
+                : "/images/logo4.png"
+            }
+            alt="TopUp"
+            className="h-16 w-auto transition-opacity duration-200"
+          />
+        </Link>
+
+        {/* =====================================================
+            DESKTOP NAVIGATION
+        ===================================================== */}
+
         <nav
           onMouseLeave={() => setHovered(null)}
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full bg-[#242424] p-1 lg:flex"
+          className="
+            absolute
+            left-1/2
+            hidden
+            -translate-x-1/2
+            items-center
+            gap-1
+            rounded-full
+            bg-[#242424]
+            p-1
+            lg:flex
+          "
         >
           {LINKS.map((link) => {
             const isActive = link.href === pathname;
@@ -52,27 +117,63 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onMouseEnter={() => setHovered(link.href)}
-                className="relative rounded-full px-5 py-2.5 text-[14px] font-medium"
+                className="
+                  relative
+                  rounded-full
+                  px-5
+                  py-2.5
+                  text-[14px]
+                  font-medium
+                "
               >
+                {/* Active navigation pill */}
                 {isActive && (
                   <motion.span
                     layoutId="active-pill"
-                    className="absolute inset-0 rounded-full bg-white
-shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
-                    transition={{ type: "spring", stiffness: 500, damping: 34 }}
+                    className="
+                      absolute
+                      inset-0
+                      rounded-full
+                      bg-white
+                      shadow-[0_2px_12px_rgba(255,255,255,0.15)]
+                    "
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      damping: 34,
+                    }}
                   />
                 )}
+
+                {/* Hover pill */}
                 {!isActive && isHovered && (
                   <motion.span
                     layoutId="hover-pill"
-                    className="absolute inset-0 rounded-full bg-white/8"
-                    transition={{ type: "spring", stiffness: 500, damping: 34 }}
+                    className="
+                      absolute
+                      inset-0
+                      rounded-full
+                      bg-white/8
+                    "
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      damping: 34,
+                    }}
                   />
                 )}
+
+                {/* Navigation text */}
                 <span
-                  className={`relative z-10 ${
-                    isActive ? "text-[#111111]" : "text-[#F8F8F5]"
-                  }`}
+                  className={`
+                    relative
+                    z-10
+                    ${
+                      isActive
+                        ? "text-[#111111]"
+                        : "text-[#F8F8F5]"
+                    }
+                  `}
                 >
                   {link.label}
                 </span>
@@ -81,80 +182,97 @@ shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
           })}
         </nav>
 
-        {/* CTA, pinned right */}
-<Link
-  href="/network"
-  className="
-    group
-    hidden
-    lg:flex
-    items-center
-    gap-2
+        {/* =====================================================
+            FIND CHARGER CTA
+        ===================================================== */}
 
-    rounded-full
-    bg-white
-    border border-gray-200
+        <Link
+          href="/network"
+          className="
+            group
+            hidden
+            items-center
+            gap-2
+            rounded-full
+            border
+            border-gray-200
+            bg-white
+            px-1.5
+            py-1
+            shadow-md
+            transition-all
+            duration-300
+            hover:-translate-y-0.5
+            lg:flex
+          "
+        >
+          <div className="flex items-center gap-1.5 pl-1.5">
+            <MapPin
+              size={15}
+              className="text-[#FF8000]"
+            />
 
-    px-1.5
-    py-1
+            <span className="text-[14px] font-medium text-[#111827]">
+              Find Charger
+            </span>
+          </div>
 
-    shadow-md
-    transition-all duration-300
-    hover:-translate-y-0.5
-  "
->
-  <div className="flex items-center gap-1 pl-1.5">
-    <MapPin size={15} className="text-[#2563EB]" />
+          <div
+            className="
+              flex
+              h-8
+              w-8
+              items-center
+              justify-center
+              rounded-full
+              bg-[#FF8000]
+              text-black
+              transition-transform
+              duration-300
+              group-hover:translate-x-0.5
+            "
+          >
+            <ArrowRight size={15} />
+          </div>
+        </Link>
 
-    <span className="text-[14px] font-medium text-[#111827]">
-      Find Charger
-    </span>
-  </div>
+        {/* =====================================================
+            MOBILE MENU BUTTON
+        ===================================================== */}
 
-  <div
-    className="
-      flex h-8 w-8 items-center justify-center
-      rounded-full
-      bg-[#2563EB]
-      text-white
-      transition-transform duration-300
-      group-hover:translate-x-0.5
-    "
-  >
-    <ArrowRight size={15} />
-  </div>
-</Link>
-
-
-        {/* Mobile menu toggle */}
         <button
-  onClick={() => setMobileOpen(true)}
-  aria-label="Open menu"
-  className="
-    group
-    relative
-    z-10
-    lg:hidden
-    flex
-    items-center
-    justify-center
-    rounded-full
-    border border-white/10
-    bg-[#1A1A1A]/75
-    p-3
-    text-[#F8F8F5]
-    backdrop-blur-xl
-    shadow-[0_8px_24px_rgba(0,0,0,0.25)]
-   transition-[transform,box-shadow,border-color,background-color]
-duration-300
-ease-[cubic-bezier(.22,1,.36,1)]
-    hover:bg-[#242424]/80
-    hover:scale-105
-  "
->
-  <Menu size={22} strokeWidth={1.5} />
-</button>
+          onClick={() => setMobileOpen(true)}
+          aria-label="Open menu"
+          className="
+            group
+            relative
+            z-10
+            flex
+            items-center
+            justify-center
+            rounded-full
+            border
+            border-white/10
+            bg-[#1A1A1A]/75
+            p-3
+            text-[#F8F8F5]
+            shadow-[0_8px_24px_rgba(0,0,0,0.25)]
+            backdrop-blur-xl
+            transition-[transform,box-shadow,border-color,background-color]
+            duration-300
+            ease-[cubic-bezier(.22,1,.36,1)]
+            hover:scale-105
+            hover:bg-[#242424]/80
+            lg:hidden
+          "
+        >
+          <Menu size={22} strokeWidth={1.5} />
+        </button>
       </div>
+
+      {/* =======================================================
+          MOBILE MENU
+      ======================================================= */}
 
       <AnimatePresence>
         {mobileOpen && (
@@ -163,47 +281,102 @@ ease-[cubic-bezier(.22,1,.36,1)]
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-0 z-50 bg-[#111111] lg:hidden"
+            className="
+              fixed
+              inset-0
+              top-0
+              z-50
+              bg-[#111111]
+              lg:hidden
+            "
           >
+            {/* Mobile menu header */}
             <div className="flex h-20 items-center justify-between px-6">
-              <img
-  src="/images/logo.png"
-  alt="TopUp"
-  className="h-10 w-auto"
-/>
+
+              <Link
+                href="/"
+                onClick={() => setMobileOpen(false)}
+                aria-label="TopUp home"
+              >
+                <img
+                  src="/images/logo4.png"
+                  alt="TopUp"
+                  className="h-10 w-auto"
+                />
+              </Link>
+
               <button
                 onClick={() => setMobileOpen(false)}
                 className="text-[#F8F8F5]"
                 aria-label="Close menu"
               >
-                <X size={22} strokeWidth={1.5} />
+                <X
+                  size={22}
+                  strokeWidth={1.5}
+                />
               </button>
             </div>
 
+            {/* Mobile links */}
             <nav className="mt-16 flex flex-col gap-8 px-8">
               {LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * i, duration: 0.4 }}
+                  initial={{
+                    opacity: 0,
+                    y: 16,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay: 0.05 * i,
+                    duration: 0.4,
+                  }}
                 >
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-3xl font-medium tracking-[-0.01em] text-[#F8F8F5]"
+                    className="
+                      text-3xl
+                      font-medium
+                      tracking-[-0.01em]
+                      text-[#F8F8F5]
+                      transition-colors
+                      duration-200
+                      hover:text-[#FF8000]
+                    "
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
 
+              {/* Mobile CTA */}
               <Link
-            href="/network"
+                href="/network"
                 onClick={() => setMobileOpen(false)}
-                className="mt-4 w-fit rounded-full bg-[#2563EB] px-6 py-3 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111]"
+                className="
+                  mt-4
+                  flex
+                  w-fit
+                  items-center
+                  gap-3
+                  rounded-full
+                  bg-[#FF8000]
+                  px-6
+                  py-3
+                  text-[13px]
+                  font-medium
+                  uppercase
+                  tracking-[0.15em]
+                  text-black
+                "
               >
                 Find Charger
+
+                <ArrowRight size={15} />
               </Link>
             </nav>
           </motion.div>

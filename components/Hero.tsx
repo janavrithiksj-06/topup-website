@@ -1,177 +1,384 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const reveal = (delay: number, y = 20) =>
+    shouldReduceMotion
+      ? {
+          initial: { opacity: 1, y: 0 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0 },
+        }
+      : {
+          initial: { opacity: 0, y },
+          animate: { opacity: 1, y: 0 },
+          transition: {
+            duration: 0.9,
+            delay,
+            ease: [0.22, 1, 0.36, 1] as const,
+          },
+        };
+
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#162030] scroll-mt-28"
+      data-navbar-theme="dark"
+      aria-label="Topup EV charging network"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#080808] text-white"
     >
-      {/* Background */}
+      {/* =========================================================
+          CINEMATIC HERO VIDEO
+      ========================================================= */}
+
       <div className="absolute inset-0">
-<video
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="metadata"
-  aria-hidden="true"
-  className="absolute inset-0 h-full w-full object-cover"
->
-          <source src="/videos/hero.mp4" type="video/mp4" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/videos/hero-poster.jpg"
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/hero2.mp4" type="video/mp4" />
         </video>
 
-        {/* Primary Blue Glow */}
+        {/* Very light overall treatment */}
         <div
-          className="
-            absolute
-            left-[-35%]
-            top-[-10%]
-            h-[350px]
-            w-[350px]
-            rounded-full
-            bg-[#3B82F6]/10
-            blur-[120px]
-
-            md:left-[-10%]
-            md:top-[10%]
-            md:h-[500px]
-            md:w-[500px]
-            md:bg-[#3B82F6]/20
-            md:blur-[140px]
-          "
+          aria-hidden="true"
+          className="absolute inset-0 bg-black/15"
         />
 
-        {/* Secondary Cyan Glow */}
+        {/* Protects the left-side typography without killing the video */}
         <div
-          className="
-            absolute
-            right-[-25%]
-            bottom-[-15%]
-            h-[320px]
-            w-[320px]
-            rounded-full
-            bg-cyan-400/5
-            blur-[120px]
-
-            md:right-[-10%]
-            md:bottom-[-10%]
-            md:h-[450px]
-            md:w-[450px]
-            md:bg-cyan-400/10
-            md:blur-[130px]
-          "
-        />
-
-        {/* Overlay */}
-        <div
+          aria-hidden="true"
           className="
             absolute inset-0
             bg-gradient-to-r
-            from-[#162030]
-            via-[#162030]/90
-            to-[#162030]/40
+            from-black/75
+            via-black/30
+            to-transparent
+          "
+        />
 
-            md:from-[#162030]/95
-            md:via-[#162030]/65
-            md:to-transparent
+        {/* Subtle bottom transition */}
+        <div
+          aria-hidden="true"
+          className="
+            absolute inset-x-0 bottom-0 h-32
+            bg-gradient-to-t
+            from-[#080808]/70
+            to-transparent
           "
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 py-32 md:px-10">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mb-6 text-[12px] font-medium uppercase tracking-[0.35em] text-slate-200 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
-        >
-          Launching 2026 • DC Fast Charging • Tamil Nadu & Karnataka
-        </motion.p>
+      {/* =========================================================
+          HERO CONTENT
+          Existing Navbar sits above this component.
+      ========================================================= */}
 
-       <motion.h1
-  initial={{ opacity: 0, y: 24 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    duration: 1,
-    delay: 0.1,
-    ease: [0.22, 1, 0.36, 1],
-  }}
-  className="max-w-3xl text-6xl font-medium leading-[0.92] tracking-[-0.03em] text-[#F8FAFC] drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)] sm:text-7xl md:text-8xl lg:text-9xl"
->
-  Charge fast.
-  <br />
-  <span className="text-[#2563EB]">Drive further.</span>
-</motion.h1>
+      <div
+        className="
+          relative z-10
+          mx-auto
+          flex
+          min-h-screen
+          w-full
+          max-w-[1600px]
+          items-center
+          px-6
+          pb-24
+          pt-28
+          md:px-10
+          lg:px-14
+        "
+      >
+        <div className="w-full">
 
-<motion.p
-  initial={{ opacity: 0, y: 18 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    duration: 0.9,
-    delay: 0.25,
-    ease: [0.22, 1, 0.36, 1],
-  }}
-  className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl"
->
-  <span className="font-semibold text-white">Topup</span> is building India's
-  next-generation <span className="font-semibold text-white">EV charging
-  network</span> with reliable{" "}
-  <span className="font-semibold text-white">DC fast chargers</span>,
-  delivering seamless charging experiences for electric vehicles across India.
-</motion.p>
+          {/* Small eyebrow */}
+          <motion.div
+            {...reveal(0.1, 12)}
+            className="mb-7 flex items-center gap-4"
+          >
+            <span
+              aria-hidden="true"
+              className="h-px w-10 bg-[#FF8000]"
+            />
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.9,
-            delay: 0.35,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-5"
-        >
-<Link
-  href="/network"
-  aria-label="Find EV charging stations"
-  className="bg-[#3B82F6] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8FAFC] transition-all duration-300 hover:bg-[#60A5FA]"
->
-  Find Charger
-</Link>
+            <span
+              className="
+                text-[10px]
+                font-medium
+                uppercase
+                tracking-[0.32em]
+                text-white/65
+                md:text-[11px]
+              "
+            >
+              Built for the road ahead
+            </span>
+          </motion.div>
 
-<Link
-  href="/partner"
-  aria-label="Partner with Topup"
-  className="group flex items-center gap-2 text-[13px] font-medium uppercase tracking-[0.15em] text-[#F8FAFC] transition-colors duration-300 hover:text-[#60A5FA]"
->
-  Partner With Us
-  <ArrowRight
-    size={14}
-    className="transition-transform duration-300 group-hover:translate-x-1"
-  />
-</Link>
-        </motion.div>
+          {/* =====================================================
+              MAIN HEADLINE
+          ===================================================== */}
+
+          <motion.h1
+            {...reveal(0.18, 30)}
+            className="
+              max-w-[980px]
+              text-[clamp(4rem,9.5vw,9.5rem)]
+              font-medium
+              leading-[0.82]
+              tracking-[-0.07em]
+              text-white
+            "
+          >
+            <span className="block">
+              Charge fast.
+            </span>
+
+            <span className="block">
+              Drive further.
+            </span>
+
+            <span className="sr-only">
+              Topup EV charging network with DC fast chargers across India
+            </span>
+          </motion.h1>
+
+          {/* =====================================================
+              DESCRIPTION
+          ===================================================== */}
+
+          <motion.p
+            {...reveal(0.3, 18)}
+            className="
+              mt-9
+              max-w-[520px]
+              text-[15px]
+              leading-7
+              text-white/65
+              md:text-[17px]
+              md:leading-8
+            "
+          >
+            A reliable DC fast charging network built for
+            electric mobility across India.
+          </motion.p>
+
+          {/* =====================================================
+              ACTIONS
+          ===================================================== */}
+
+          <motion.div
+            {...reveal(0.4, 16)}
+            className="
+              mt-10
+              flex
+              flex-wrap
+              items-center
+              gap-8
+            "
+          >
+            {/* Primary CTA */}
+            <Link
+              href="/network"
+              aria-label="Find Topup charging stations"
+              className="
+                group
+                inline-flex
+                items-center
+                gap-7
+                bg-white
+                px-7
+                py-4
+                text-[11px]
+                font-semibold
+                uppercase
+                tracking-[0.18em]
+                text-black
+                transition-all
+                duration-300
+                hover:bg-[#FF8000]
+              "
+            >
+              Find a Charger
+
+              <ArrowRight
+                size={15}
+                strokeWidth={1.8}
+                aria-hidden="true"
+                className="
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
+            </Link>
+
+            {/* Secondary CTA */}
+            <Link
+              href="/partner"
+              aria-label="Partner with Topup"
+              className="
+                group
+                inline-flex
+                items-center
+                gap-3
+                border-b
+                border-white/35
+                pb-2
+                text-[11px]
+                font-medium
+                uppercase
+                tracking-[0.18em]
+                text-white/80
+                transition-all
+                duration-300
+                hover:border-white
+                hover:text-white
+              "
+            >
+              Partner With Us
+
+              <ArrowRight
+                size={14}
+                strokeWidth={1.8}
+                aria-hidden="true"
+                className="
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
+            </Link>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* =========================================================
+          BOTTOM INFORMATION BAR
+      ========================================================= */}
+
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
-          duration: 1,
-          delay: 0.9,
+          duration: shouldReduceMotion ? 0 : 1,
+          delay: shouldReduceMotion ? 0 : 0.8,
         }}
-        className="absolute bottom-8 right-6 hidden items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-slate-300/70 md:right-10 md:flex"
+        className="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          z-10
+          border-t
+          border-white/10
+        "
       >
-        <span className="h-8 w-px bg-[#E5E7EB]/30" />
-        Scroll
+        <div
+          className="
+            mx-auto
+            flex
+            max-w-[1600px]
+            items-center
+            justify-between
+            px-6
+            py-5
+            md:px-10
+            lg:px-14
+          "
+        >
+          <div className="flex items-center gap-7">
+
+            <div>
+              <p className="text-[8px] uppercase tracking-[0.28em] text-white/30">
+                Launching
+              </p>
+
+              <p className="mt-1 text-xs text-white/65">
+                2026
+              </p>
+            </div>
+
+            <span className="h-6 w-px bg-white/10" />
+
+            <div className="hidden sm:block">
+              <p className="text-[8px] uppercase tracking-[0.28em] text-white/30">
+                Starting in
+              </p>
+
+              <p className="mt-1 text-xs text-white/65">
+                Tamil Nadu · Karnataka
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="hidden text-[8px] uppercase tracking-[0.28em] text-white/30 sm:block">
+              Explore
+            </span>
+
+            <span
+              aria-hidden="true"
+              className="h-7 w-px bg-white/25"
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* =========================================================
+          DESKTOP SIDE INDICATOR
+      ========================================================= */}
+
+      <motion.div
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: shouldReduceMotion ? 0 : 0.8,
+          delay: shouldReduceMotion ? 0 : 1,
+        }}
+        aria-hidden="true"
+        className="
+          absolute
+          right-6
+          top-1/2
+          z-10
+          hidden
+          -translate-y-1/2
+          flex-col
+          items-center
+          gap-3
+          lg:flex
+          xl:right-10
+        "
+      >
+        <span className="text-[9px] tracking-[0.2em] text-white/45">
+          01
+        </span>
+
+        <span className="h-14 w-px bg-white/20" />
+
+        <span
+          className="
+            [writing-mode:vertical-rl]
+            text-[8px]
+            uppercase
+            tracking-[0.3em]
+            text-white/25
+          "
+        >
+          Explore
+        </span>
       </motion.div>
     </section>
   );

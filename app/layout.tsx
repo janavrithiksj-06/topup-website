@@ -124,8 +124,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
 
     apple: "/apple-touch-icon.png",
@@ -133,7 +131,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
   },
 
-  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -143,7 +140,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-IN">
-     <body className={`${geist.className} bg-[#F7F7F5] text-neutral-900`}>
+    <body className={geist.className} style={{ background: "var(--background)", color: "var(--foreground)" }}>
   <StructuredData />
   <Navbar />
   {children}
