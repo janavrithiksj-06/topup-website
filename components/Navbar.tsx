@@ -185,57 +185,49 @@ export default function Navbar() {
         {/* =====================================================
             FIND CHARGER CTA
         ===================================================== */}
+<Link
+  href="/network"
+  className="
+    group
+    hidden
+    items-center
+    gap-2
+    rounded-full
+    bg-[#242424]
+    p-1
+    lg:flex
+  "
+>
+  <div className="flex items-center gap-1.5 px-3">
+    <MapPin
+      size={15}
+      strokeWidth={1.8}
+      className="text-[#F8F8F5]"
+    />
 
-        <Link
-          href="/network"
-          className="
-            group
-            hidden
-            items-center
-            gap-2
-            rounded-full
-            border
-            border-gray-200
-            bg-white
-            px-1.5
-            py-1
-            shadow-md
-            transition-all
-            duration-300
-            hover:-translate-y-0.5
-            lg:flex
-          "
-        >
-          <div className="flex items-center gap-1.5 pl-1.5">
-            <MapPin
-              size={15}
-              className="text-[#FF8000]"
-            />
+    <span className="text-[14px] font-medium text-[#F8F8F5]">
+      Find Charger
+    </span>
+  </div>
 
-            <span className="text-[14px] font-medium text-[#111827]">
-              Find Charger
-            </span>
-          </div>
-
-          <div
-            className="
-              flex
-              h-8
-              w-8
-              items-center
-              justify-center
-              rounded-full
-              bg-[#FF8000]
-              text-black
-              transition-transform
-              duration-300
-              group-hover:translate-x-0.5
-            "
-          >
-            <ArrowRight size={15} />
-          </div>
-        </Link>
-
+  <div
+    className="
+      flex
+      h-8
+      w-8
+      items-center
+      justify-center
+      rounded-full
+      bg-white
+      text-[#111111]
+      transition-transform
+      duration-300
+      group-hover:translate-x-0.5
+    "
+  >
+    <ArrowRight size={15} />
+  </div>
+</Link>
         {/* =====================================================
             MOBILE MENU BUTTON
         ===================================================== */}
