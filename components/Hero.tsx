@@ -36,18 +36,7 @@ export default function Hero() {
       ========================================================= */}
 
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/videos/hero-poster.jpg"
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/videos/hero2.mp4" type="video/mp4" />
-        </video>
+       <div className="absolute inset-0 bg-[#080808]" />
 
         {/* Very light overall treatment */}
         <div
