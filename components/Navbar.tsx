@@ -356,7 +356,7 @@ export default function Navbar() {
                   items-center
                   gap-3
                   rounded-full
-                  bg-[#FF8000]
+                  bg-white
                   px-6
                   py-3
                   text-[13px]
