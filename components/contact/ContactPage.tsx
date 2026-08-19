@@ -110,10 +110,10 @@ export default function ContactPage() {
                 <Phone className="mt-0.5 h-5 w-5 text-[#2563EB]" strokeWidth={1.5} />
                 <div>
                   <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
-                    Business Hours
+                    Phone
                   </p>
                   <p className="mt-1.5 text-[15px]">
-                    Monday – Saturday, 9:00 AM – 6:00 PM
+                    +91 90802 99599
                   </p>
                 </div>
               </div>
