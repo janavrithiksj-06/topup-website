@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Map from "react-map-gl/mapbox";
 
 export default function FakeMap() {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+  const [loaded, setLoaded] = useState(false);
 
   if (!token) {
     return (
@@ -15,7 +17,25 @@ export default function FakeMap() {
   }
 
   return (
-    <div className="h-[55vh] w-full md:h-[70vh]">
+    <div className="relative h-[55vh] w-full bg-[#0c0c0c] md:h-[70vh]">
+
+      {/* Loading State */}
+      {!loaded && (
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#0c0c0c]">
+          <div className="flex flex-col items-center">
+
+            <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-white/50">
+              Loading network
+            </p>
+
+            <div className="mt-4 h-px w-24 overflow-hidden bg-white/10">
+              <div className="energy h-full w-1/2" />
+            </div>
+
+          </div>
+        </div>
+      )}
+
       <Map
         mapboxAccessToken={token}
         initialViewState={{
@@ -34,7 +54,9 @@ export default function FakeMap() {
         pitchWithRotate={false}
         touchZoomRotate={false}
         cooperativeGestures
+        onLoad={() => setLoaded(true)}
       />
+
     </div>
   );
 }
