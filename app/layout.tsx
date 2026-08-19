@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import "mapbox-gl/dist/mapbox-gl.css";
-import StructuredData from "@/components/StructuredData";
 
+import StructuredData from "@/components/StructuredData";
 import Navbar from "@/components/Navbar";
 
 const geist = Geist({
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -81,12 +82,9 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://topupchargers.com",
     siteName: "Topup",
-
     title: "Topup | EV Charging Network in India",
-
     description:
       "Powering India's electric future with reliable DC fast charging infrastructure.",
-
     images: [
       {
         url: "/og-image.jpg",
@@ -99,20 +97,15 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-
     title: "Topup | EV Charging Network",
-
     description:
       "Reliable DC fast charging infrastructure for India's electric future.",
-
-    creator: "@topup", // Change when your X account exists
-
+    creator: "@topup",
     images: ["/og-image.jpg"],
   },
 
   verification: {
     google: "YOUR_GOOGLE_SEARCH_CONSOLE_CODE",
-    // bing: "YOUR_BING_CODE",
   },
 
   appleWebApp: {
@@ -122,15 +115,10 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-    ],
-
+    icon: [{ url: "/favicon.ico" }],
     apple: "/apple-touch-icon.png",
-
     shortcut: "/favicon.ico",
   },
-
 };
 
 export default function RootLayout({
@@ -140,11 +128,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-IN">
-    <body className={geist.className} style={{ background: "var(--background)", color: "var(--foreground)" }}>
-  <StructuredData />
-  <Navbar />
-  {children}
-</body>
+      <body
+        className={geist.className}
+        style={{
+          background: "var(--background)",
+          color: "var(--foreground)",
+        }}
+      >
+        <StructuredData />
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
