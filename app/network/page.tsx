@@ -1,7 +1,7 @@
-import FakeMap from "@/components/network/FakeMap";
 import PartnerCTA from "@/components/network/PartnerCTA";
 import FadeIn from "@/components/FadeIn";
 import type { Metadata } from "next";
+import LazyMap from "@/components/network/LazyMap";
 
 export const metadata: Metadata = {
   title: "Find EV Charging Stations | Topup",
@@ -14,8 +14,42 @@ export default function NetworkPage() {
     <main className="min-h-screen overflow-hidden bg-[#EEF2F6] text-[#111111]">
 
       {/* Background Glow */}
-      <div className="absolute -left-32 top-20 h-[500px] w-[500px] rounded-full bg-slate-200/40 blur-[140px]" />
-      <div className="absolute right-0 top-[420px] h-[420px] w-[420px] rounded-full bg-slate-300/25 blur-[120px]" />
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          -left-20
+          top-20
+          h-[280px]
+          w-[280px]
+          rounded-full
+          bg-slate-200/40
+          blur-[80px]
+          md:-left-32
+          md:h-[500px]
+          md:w-[500px]
+          md:blur-[140px]
+        "
+      />
+
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          right-0
+          top-[420px]
+          h-[260px]
+          w-[260px]
+          rounded-full
+          bg-slate-300/25
+          blur-[80px]
+          md:h-[420px]
+          md:w-[420px]
+          md:blur-[120px]
+        "
+      />
 
       {/* =====================================================
           HERO
@@ -52,7 +86,7 @@ export default function NetworkPage() {
               md:text-7xl
             "
           >
-            Powering India's
+            Powering India&apos;s
             <br />
             next generation
             <br />
@@ -105,7 +139,7 @@ export default function NetworkPage() {
             "
           >
 
-            <FakeMap />
+            <LazyMap />
 
             {/* =================================================
                 FLOATING CARD
@@ -114,18 +148,21 @@ export default function NetworkPage() {
             <div
               className="
                 absolute
-                left-6
-                top-6
-                max-w-sm
+                left-4
+                top-4
+                max-w-[calc(100%-2rem)]
                 rounded-3xl
                 border
                 border-white/70
-                bg-white/90
-                p-8
+                bg-white/95
+                p-6
                 shadow-xl
-                backdrop-blur-xl
+                backdrop-blur-none
                 md:left-10
                 md:top-10
+                md:max-w-sm
+                md:p-8
+                md:backdrop-blur-xl
               "
             >
 
@@ -147,11 +184,13 @@ export default function NetworkPage() {
               <div className="mt-8 h-px bg-[#D7DEE7]" />
 
               <div className="mt-6 flex items-center gap-3">
-                <span className="h-px w-7 bg-[#FF8000]" />
+
+                <span className="h-px w-7 shrink-0 bg-[#FF8000]" />
 
                 <span className="text-sm text-[#5F6B7A]">
                   First locations launching soon
                 </span>
+
               </div>
 
             </div>

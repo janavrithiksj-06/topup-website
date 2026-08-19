@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import "mapbox-gl/dist/mapbox-gl.css";
 
 import StructuredData from "@/components/StructuredData";
 import Navbar from "@/components/Navbar";

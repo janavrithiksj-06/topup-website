@@ -4,7 +4,8 @@
 :root {
   --background: #070707;
   --foreground: #ffffff;
-  --accent: #ff4b00; /* McLaren papaya orange */
+
+  --accent: #ff4b00;
   --accent-strong: #ff7a2c;
   --accent-deep: #2b2b2b;
 }
@@ -16,48 +17,39 @@
   --font-mono: var(--font-geist-mono);
 }
 
-.energy{
-    background:
-      linear-gradient(
-        110deg,
-        transparent 0%,
-        transparent 15%,
+/* =========================================================
+   ENERGY ANIMATION
+========================================================= */
 
-        rgba(255,75,0,.08) 25%,
-        rgba(255,122,44,.35) 35%,
-        rgba(255,75,0,.10) 45%,
+.energy {
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      transparent 15%,
+      rgba(255, 75, 0, 0.08) 25%,
+      rgba(255, 122, 44, 0.35) 35%,
+      rgba(255, 75, 0, 0.10) 45%,
+      transparent 55%,
+      transparent 100%
+    );
 
-        transparent 55%,
-        transparent 100%
-      );
-
-    animation: flow 3.2s linear infinite;
+  animation: flow 3.2s linear infinite;
 }
 
-@keyframes flow{
-    from{
-        transform:translateX(-25%);
-    }
-    to{
-        transform:translateX(25%);
-    }
-}
+@keyframes flow {
+  from {
+    transform: translateX(-25%);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  to {
+    transform: translateX(25%);
   }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --accent: #ff4b00;
-    --accent-strong: #ff7a2c;
-  }
-}
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 html {
   scroll-behavior: smooth;
@@ -69,24 +61,50 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(255,75,0,0.10), transparent 22%),
-    radial-gradient(circle at bottom right, rgba(255,122,44,0.08), transparent 20%),
-    linear-gradient(180deg, #0b0b0b 0%, #070707 100%);
+  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
 }
 
-/* Map common blue hex utilities to McLaren accent colors */
-[class*='bg-[#2563EB]']{background-color:var(--accent) !important}
-[class*='text-[#2563EB]']{color:var(--accent) !important}
-[class*='border-[#2563EB]']{border-color:var(--accent) !important}
+/* =========================================================
+   BLUE → PAPAYA COMPATIBILITY
+   Keeps older components using the previous blue palette
+   visually consistent with the new Topup palette.
+========================================================= */
 
-[class*='bg-[#3B82F6]']{background-color:var(--accent-strong) !important}
-[class*='text-[#3B82F6]']{color:var(--accent-strong) !important}
-[class*='hover:bg-[#60A5FA]']{background-color:var(--accent-strong) !important}
-[class*='hover:text-[#60A5FA]']{color:var(--accent-strong) !important}
+[class*="bg-[#2563EB]"] {
+  background-color: var(--accent) !important;
+}
 
-[class*='text-[#1A73E8]']{color:var(--accent-strong) !important}
-[class*='bg-[#EAF3FF]']{background-color:rgba(255,122,44,0.06) !important}
+[class*="text-[#2563EB]"] {
+  color: var(--accent) !important;
+}
+
+[class*="border-[#2563EB]"] {
+  border-color: var(--accent) !important;
+}
+
+[class*="bg-[#3B82F6]"] {
+  background-color: var(--accent-strong) !important;
+}
+
+[class*="text-[#3B82F6]"] {
+  color: var(--accent-strong) !important;
+}
+
+[class*="hover:bg-[#60A5FA]"] {
+  background-color: var(--accent-strong) !important;
+}
+
+[class*="hover:text-[#60A5FA]"] {
+  color: var(--accent-strong) !important;
+}
+
+[class*="text-[#1A73E8]"] {
+  color: var(--accent-strong) !important;
+}
+
+[class*="bg-[#EAF3FF]"] {
+  background-color: rgba(255, 122, 44, 0.06) !important;
+}
