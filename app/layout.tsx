@@ -76,36 +76,31 @@ export const metadata: Metadata = {
     },
   },
 
-  openGraph: {
-    type: "website",
-    locale: "en_IN",
-    url: "https://topupchargers.com",
-    siteName: "Topup",
-    title: "Topup | EV Charging Network in India",
-    description:
-      "Powering India's electric future with reliable DC fast charging infrastructure.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Topup EV Charging Network",
-      },
-    ],
-  },
+openGraph: {
+  type: "website",
+  locale: "en_IN",
+  url: "https://topupchargers.com",
+  siteName: "Topup",
+  title: "Topup | EV Charging Network in India",
+  description:
+    "Powering India's electric future with reliable DC fast charging infrastructure.",
+  images: [
+    {
+      url: "/og-image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "Topup EV Charging Network",
+    },
+  ],
+},
 
-  twitter: {
-    card: "summary_large_image",
-    title: "Topup | EV Charging Network",
-    description:
-      "Reliable DC fast charging infrastructure for India's electric future.",
-    creator: "@topup",
-    images: ["/og-image.jpg"],
-  },
-
-  verification: {
-    google: "YOUR_GOOGLE_SEARCH_CONSOLE_CODE",
-  },
+twitter: {
+  card: "summary_large_image",
+  title: "Topup | EV Charging Network",
+  description:
+    "Reliable DC fast charging infrastructure for India's electric future.",
+  images: ["/og-image.jpg"],
+},
 
   appleWebApp: {
     capable: true,
