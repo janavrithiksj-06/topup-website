@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Menu, X, MapPin, ArrowRight } from "lucide-react";
+import { Menu, X, MapPin, ArrowRight, Compass } from "lucide-react";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -20,6 +20,7 @@ export default function Navbar() {
   const [hovered, setHovered] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [lightBackground, setLightBackground] = useState(false);
+  const [ctaHovered, setCtaHovered] = useState(false);
 
   /*
    * Detect the section underneath the navbar.
@@ -182,16 +183,17 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* =====================================================
-            FIND CHARGER CTA
-        ===================================================== */}
+{/* =====================================================
+    FIND CHARGER CTA
+===================================================== */}
 <Link
   href="/network"
+  onMouseEnter={() => setCtaHovered(true)}
+  onMouseLeave={() => setCtaHovered(false)}
   className="
     group
     hidden
     items-center
-    gap-2
     rounded-full
     bg-[#242424]
     p-1
@@ -210,24 +212,64 @@ export default function Navbar() {
     </span>
   </div>
 
+  {/* Divider — only appears on hover */}
+  <motion.div
+    initial={false}
+    animate={{
+      width: ctaHovered ? 1 : 0,
+      opacity: ctaHovered ? 1 : 0,
+    }}
+    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+    className="h-4 bg-[#A88A4A]/40"
+  />
+
   <div
     className="
+      relative
       flex
       h-8
       w-8
       items-center
       justify-center
+      overflow-hidden
       rounded-full
       bg-white
       text-[#111111]
       transition-transform
       duration-300
+      ease-[cubic-bezier(.22,1,.36,1)]
       group-hover:translate-x-0.5
+      m-1
     "
   >
-    <ArrowRight size={15} />
+    <AnimatePresence mode="wait" initial={false}>
+      {ctaHovered ? (
+        <motion.span
+          key="compass"
+          initial={{ opacity: 0, rotate: -45 }}
+          animate={{ opacity: 1, rotate: 0 }}
+          exit={{ opacity: 0, rotate: 45 }}
+          transition={{ duration: 0.2 }}
+          className="absolute"
+        >
+          <Compass size={15} strokeWidth={1.8} />
+        </motion.span>
+      ) : (
+        <motion.span
+          key="arrow"
+          initial={{ opacity: 0, rotate: 45 }}
+          animate={{ opacity: 1, rotate: 0 }}
+          exit={{ opacity: 0, rotate: -45 }}
+          transition={{ duration: 0.2 }}
+          className="absolute"
+        >
+          <ArrowRight size={15} />
+        </motion.span>
+      )}
+    </AnimatePresence>
   </div>
 </Link>
+
         {/* =====================================================
             MOBILE MENU BUTTON
         ===================================================== */}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -17,6 +17,7 @@ export default function ContactPage() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     setLoading(true);
     setSuccess("");
     setError("");
@@ -24,14 +25,24 @@ export default function ContactPage() {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(form),
       });
 
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) {
+        throw new Error("Failed");
+      }
 
       setSuccess("Message sent successfully.");
-      setForm({ name: "", email: "", subject: "", message: "" });
+
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
     } catch {
       setError("Something went wrong. Please try again.");
     }
@@ -40,219 +51,565 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="bg-[#171A1F] text-[#F8F8F5]">
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/contact-hero.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-[#111111]/85" />
+    <main className="bg-[#F5F5F2] text-[#111111]">
 
-        <div className="relative mx-auto flex min-h-[480px] max-w-[1400px] items-center px-6 md:px-10">
-          <div className="max-w-2xl">
-            <p className="mb-5 text-[12px] font-medium uppercase tracking-[0.35em] text-[#D6D6D6]">
-              Contact
-            </p>
-            <h1 className="text-5xl font-medium leading-[0.95] tracking-[-0.02em] md:text-7xl">
-              Let&apos;s build the future
-              <br />
-              of <span className="text-[#2563EB]">EV charging</span>.
-            </h1>
-            <p className="mt-8 max-w-xl text-[17px] leading-8 text-[#D6D6D6]">
-              From hotels and commercial properties to fleet operators and
-              investors — we&apos;re building India&apos;s charging
-              infrastructure.
-            </p>
-          </div>
+      {/* =====================================================
+          HERO
+      ===================================================== */}
+
+      <section
+        data-navbar-theme="light"
+        className="
+          mx-auto
+          flex
+          min-h-[72vh]
+          max-w-[1500px]
+          flex-col
+          justify-end
+          px-6
+          pb-20
+          pt-40
+          md:px-10
+          md:pb-24
+          lg:px-14
+        "
+      >
+        <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-black/40">
+          Contact Topup
+        </p>
+
+        <h1
+          className="
+            mt-8
+            max-w-[1050px]
+            text-[clamp(4rem,9vw,9rem)]
+            font-medium
+            leading-[0.84]
+            tracking-[-0.07em]
+          "
+        >
+          Let&apos;s talk.
+        </h1>
+
+        <div className="mt-10 max-w-xl border-t border-black/10 pt-6">
+          <p className="text-base leading-7 text-black/55 md:text-lg">
+            Have a question, want to partner with us, or looking to bring
+            Topup charging to your location? We&apos;d love to hear from you.
+          </p>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="mx-auto max-w-[1400px] px-6 py-28 md:px-10">
-        <div className="grid gap-16 lg:grid-cols-[360px_1fr] lg:gap-24">
-          {/* Business Information */}
-          <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
-              Get in Touch
-            </p>
-            <h2 className="mt-6 text-3xl font-medium tracking-[-0.01em]">
-              Let&apos;s talk.
-            </h2>
-            <p className="mt-5 leading-7 text-[#D6D6D6]">
-              Whether you&apos;re planning a commercial installation,
-              exploring a partnership, or have a question — our team is
-              here to help.
-            </p>
+      {/* =====================================================
+          CONTACT DETAILS
+      ===================================================== */}
 
-            <div className="mt-12 space-y-8 border-t border-white/10 pt-10">
-              <div className="flex items-start gap-4">
-                <Mail className="mt-0.5 h-5 w-5 text-[#2563EB]" strokeWidth={1.5} />
-                <div>
-                  <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
-                    Email
-                  </p>
-                  <p className="mt-1.5 text-[15px]">hello@topupchargers.com</p>
-                </div>
-              </div>
+      <section
+        data-navbar-theme="light"
+        className="
+          border-y
+          border-black/10
+        "
+      >
+        <div className="mx-auto grid max-w-[1500px] md:grid-cols-3">
 
-              <div className="flex items-start gap-4">
-                <MapPin className="mt-0.5 h-5 w-5 text-[#2563EB]" strokeWidth={1.5} />
-                <div>
-                  <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
-                    Location
-                  </p>
-                  <p className="mt-1.5 text-[15px]">Tamil Nadu, India</p>
-                </div>
-              </div>
+          {/* EMAIL */}
 
-              <div className="flex items-start gap-4">
-                <Phone className="mt-0.5 h-5 w-5 text-[#2563EB]" strokeWidth={1.5} />
-                <div>
-                  <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
-                    Phone
-                  </p>
-                  <p className="mt-1.5 text-[15px]">
-                    +91 90802 99599
-                  </p>
-                </div>
-              </div>
+          <a
+            href="mailto:hello@topupchargers.com"
+            className="
+              group
+              border-b
+              border-black/10
+              px-6
+              py-9
+              transition-colors
+              duration-300
+              hover:bg-white
+              md:border-b-0
+              md:border-r
+              md:px-10
+              md:py-11
+              lg:px-14
+            "
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/35">
+                Email
+              </p>
+
+              <ArrowRight
+                size={15}
+                strokeWidth={1.5}
+                className="
+                  text-black/25
+                  transition-all
+                  duration-300
+                  group-hover:translate-x-1
+                  group-hover:text-[#FF8000]
+                "
+              />
             </div>
 
-            <div className="mt-10 border-t border-white/10 pt-6">
-              <p className="text-[13px] font-medium uppercase tracking-[0.1em] text-[#D6D6D6]">
-                Response Time
+            <p className="mt-5 text-[15px] text-black/75 md:text-base">
+              hello@topupchargers.com
+            </p>
+          </a>
+
+          {/* PHONE */}
+
+          <a
+            href="tel:+919080299599"
+            className="
+              group
+              border-b
+              border-black/10
+              px-6
+              py-9
+              transition-colors
+              duration-300
+              hover:bg-white
+              md:border-b-0
+              md:border-r
+              md:px-10
+              md:py-11
+              lg:px-14
+            "
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/35">
+                Phone
               </p>
-              <p className="mt-2 text-[15px] text-[#D6D6D6]">
+
+              <ArrowRight
+                size={15}
+                strokeWidth={1.5}
+                className="
+                  text-black/25
+                  transition-all
+                  duration-300
+                  group-hover:translate-x-1
+                  group-hover:text-[#FF8000]
+                "
+              />
+            </div>
+
+            <p className="mt-5 text-[15px] text-black/75 md:text-base">
+              +91 90802 99599
+            </p>
+          </a>
+
+          {/* LOCATION */}
+
+          <div
+            className="
+              px-6
+              py-9
+              transition-colors
+              duration-300
+              hover:bg-white
+              md:px-10
+              md:py-11
+              lg:px-14
+            "
+          >
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/35">
+                Location
+              </p>
+
+              <MapPin
+                size={15}
+                strokeWidth={1.5}
+                className="text-[#FF8000]"
+              />
+            </div>
+
+            <p className="mt-5 text-[15px] text-black/75 md:text-base">
+              Tamil Nadu, India
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          ENQUIRY
+      ===================================================== */}
+
+      <section
+        data-navbar-theme="light"
+        className="
+          mx-auto
+          max-w-[1500px]
+          px-6
+          py-28
+          md:px-10
+          md:py-36
+          lg:px-14
+        "
+      >
+        <div className="grid gap-16 lg:grid-cols-[0.65fr_1.35fr] lg:gap-24">
+
+          {/* LEFT SIDE */}
+
+          <div className="lg:pt-8">
+
+            <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-black/35">
+              Send an Enquiry
+            </p>
+
+            <h2
+              className="
+                mt-7
+                max-w-md
+                text-5xl
+                font-medium
+                leading-[0.9]
+                tracking-[-0.055em]
+                md:text-6xl
+              "
+            >
+              Tell us
+              <br />
+              what you&apos;re
+              <br />
+              looking for.
+            </h2>
+
+            <p className="mt-8 max-w-sm text-sm leading-7 text-black/40">
+              Whether it&apos;s a charging location, partnership,
+              installation, or something else, send us a message and
+              our team will get back to you.
+            </p>
+
+            <div className="mt-12 border-t border-black/10 pt-6">
+              <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-black/30">
+                Response
+              </p>
+
+              <p className="mt-3 text-sm leading-6 text-black/40">
                 We typically respond within one business day.
               </p>
             </div>
+
           </div>
 
-          {/* Contact Form */}
-          <div>
-            <h2 className="text-3xl font-medium tracking-[-0.01em]">
-              Send an enquiry
-            </h2>
-            <p className="mt-4 text-[#D6D6D6]">
-              Tell us about your project and we&apos;ll get back to you
-              shortly.
-            </p>
+          {/* =================================================
+              FORM
+          ================================================= */}
 
-            <form onSubmit={handleSubmit} className="mt-12 space-y-8">
-              <div className="grid gap-8 md:grid-cols-2">
-                <label className="block">
-                  <span className="text-[12px] font-medium uppercase tracking-[0.15em] text-[#D6D6D6]">
-                    Full Name
-                  </span>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#FFFFFF]"
-                  />
-                </label>
+          <div
+            className="
+              rounded-[28px]
+              border
+              border-black/10
+              bg-white
+              p-7
+              shadow-[0_20px_60px_rgba(0,0,0,0.06)]
+              md:p-10
+              lg:p-12
+            "
+          >
 
-                <label className="block">
-                  <span className="text-[12px] font-medium uppercase tracking-[0.15em] text-[#D6D6D6]">
-                    Email Address
-                  </span>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#FFFFFF]"
-                  />
-                </label>
+            {/* FORM HEADER */}
+
+            <div className="flex items-start justify-between border-b border-black/10 pb-7">
+
+              <div>
+                <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/35">
+                  Enquiry Form
+                </p>
+
+                <h3 className="mt-3 text-2xl font-medium tracking-[-0.035em]">
+                  Tell us a little more.
+                </h3>
               </div>
 
-              <label className="block">
-                <span className="text-[12px] font-medium uppercase tracking-[0.15em] text-[#D6D6D6]">
+              <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#FF8000]" />
+
+            </div>
+
+            {/* FORM */}
+
+            <form
+              onSubmit={handleSubmit}
+              className="mt-2"
+            >
+
+              {/* NAME */}
+
+              <label className="block border-b border-black/10 py-6">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.25em] text-black/40">
+                  Full Name
+                </span>
+
+                <input
+                  type="text"
+                  required
+                  value={form.name}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      name: e.target.value,
+                    })
+                  }
+                  placeholder="Your name"
+                  className="
+                    mt-3
+                    w-full
+                    bg-transparent
+                    text-[17px]
+                    font-medium
+                    text-[#111111]
+                    outline-none
+                    placeholder:text-black/25
+                  "
+                />
+              </label>
+
+              {/* EMAIL */}
+
+              <label className="block border-b border-black/10 py-6">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.25em] text-black/40">
+                  Email Address
+                </span>
+
+                <input
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      email: e.target.value,
+                    })
+                  }
+                  placeholder="you@example.com"
+                  className="
+                    mt-3
+                    w-full
+                    bg-transparent
+                    text-[17px]
+                    font-medium
+                    text-[#111111]
+                    outline-none
+                    placeholder:text-black/25
+                  "
+                />
+              </label>
+
+              {/* SUBJECT */}
+
+              <label className="block border-b border-black/10 py-6">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.25em] text-black/40">
                   Subject
                 </span>
+
                 <input
                   type="text"
                   required
                   value={form.subject}
-                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  className="mt-3 w-full border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#FFFFFF]"
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      subject: e.target.value,
+                    })
+                  }
+                  placeholder="What can we help with?"
+                  className="
+                    mt-3
+                    w-full
+                    bg-transparent
+                    text-[17px]
+                    font-medium
+                    text-[#111111]
+                    outline-none
+                    placeholder:text-black/25
+                  "
                 />
               </label>
 
-              <label className="block">
-                <span className="text-[12px] font-medium uppercase tracking-[0.15em] text-[#D6D6D6]">
+              {/* MESSAGE */}
+
+              <label className="block border-b border-black/10 py-6">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.25em] text-black/40">
                   Message
                 </span>
+
                 <textarea
                   rows={5}
                   required
                   value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="mt-3 w-full resize-none border-b border-white/20 bg-transparent py-3 text-[15px] outline-none transition-colors focus:border-[#FFFFFF]"
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      message: e.target.value,
+                    })
+                  }
+                  placeholder="Tell us a little more..."
+                  className="
+                    mt-3
+                    w-full
+                    resize-none
+                    bg-transparent
+                    text-[17px]
+                    font-medium
+                    leading-8
+                    text-[#111111]
+                    outline-none
+                    placeholder:text-black/25
+                  "
                 />
               </label>
 
-              {success && <p className="text-[14px] text-[#2563EB]">{success}</p>}
-              {error && <p className="text-[14px] text-red-400">{error}</p>}
+              {/* STATUS + BUTTON */}
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="inline-flex items-center gap-3 bg-[#2563EB] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-[#111111] transition-colors duration-300 hover:bg-[#F8F8F5] disabled:opacity-50"
-              >
-                {loading ? "Sending" : "Send Enquiry"}
-                <ArrowRight size={16} />
-              </button>
+              <div className="flex flex-col gap-6 pt-8 sm:flex-row sm:items-center sm:justify-between">
 
-              <p className="text-[13px] text-[#D6D6D6]/70">
-                Your information is kept confidential and used only to
-                respond to your enquiry.
-              </p>
-            </form>
-          </div>
-        </div>
-      </section>
+                <div className="min-h-6">
 
-      {/* Why Topup */}
-      <section className="border-t border-white/10">
-        <div className="mx-auto max-w-[1400px] px-6 py-28 md:px-10">
-          <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#2563EB]">
-            Why Topup
-          </p>
-          <h2 className="mt-5 max-w-xl text-4xl font-medium tracking-[-0.01em] md:text-5xl">
-            Built for reliability.
-          </h2>
+                  {success && (
+                    <p className="text-[13px] font-medium text-[#FF8000]">
+                      {success}
+                    </p>
+                  )}
 
-          <div className="mt-16 grid gap-0 border-t border-white/10 md:grid-cols-3">
-            {[
-              {
-                title: "Premium Hardware",
-                copy: "High-performance DC fast charging engineered for commercial environments.",
-              },
-              {
-                title: "Strategic Locations",
-                copy: "Positioned along key travel corridors and commercial destinations.",
-              },
-              {
-                title: "Long-Term Partnerships",
-                copy: "Working with hotels, businesses, fleet operators and property owners across India.",
-              },
-            ].map((item, i) => (
-              <div
-                key={item.title}
-                className={`border-b border-white/10 py-10 pr-8 md:border-b-0 md:py-12 ${
-                  i > 0 ? "md:border-l md:pl-10" : ""
-                }`}
-              >
-                <h3 className="text-xl font-medium">{item.title}</h3>
-                <p className="mt-4 leading-7 text-[#D6D6D6]">{item.copy}</p>
+                  {error && (
+                    <p className="text-[13px] font-medium text-red-500">
+                      {error}
+                    </p>
+                  )}
+
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="
+                    group
+                    inline-flex
+                    w-full
+                    items-center
+                    justify-center
+                    gap-4
+                    bg-[#111111]
+                    px-7
+                    py-4
+                    text-[12px]
+                    font-medium
+                    uppercase
+                    tracking-[0.18em]
+                    text-white
+                    transition-all
+                    duration-300
+                    hover:bg-[#FF8000]
+                    hover:text-[#111111]
+                    disabled:cursor-not-allowed
+                    disabled:opacity-50
+                    sm:w-auto
+                  "
+                >
+                  {loading ? "Sending..." : "Send Enquiry"}
+
+                  <ArrowRight
+                    size={15}
+                    strokeWidth={1.5}
+                    className="
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  />
+                </button>
+
               </div>
-            ))}
+
+              <p className="mt-6 text-[12px] leading-6 text-black/30">
+                We&apos;ll only use your details to respond to your enquiry.
+              </p>
+
+            </form>
+
           </div>
         </div>
       </section>
+
+      {/* =====================================================
+          CLOSING
+      ===================================================== */}
+
+      <section
+        data-navbar-theme="dark"
+        className="bg-[#0A0A0A] text-white"
+      >
+        <div className="mx-auto max-w-[1500px] px-6 py-28 md:px-10 md:py-36 lg:px-14">
+
+          <div className="flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
+
+            <div>
+
+              <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-white/35">
+                The road ahead
+              </p>
+
+              <h2
+                className="
+                  mt-7
+                  max-w-4xl
+                  text-[clamp(3.5rem,7vw,7rem)]
+                  font-medium
+                  leading-[0.86]
+                  tracking-[-0.065em]
+                "
+              >
+                Let&apos;s build
+                <br />
+                what comes
+                <br />
+                next.
+              </h2>
+
+            </div>
+
+            <a
+              href="/network"
+              className="
+                group
+                inline-flex
+                w-fit
+                items-center
+                gap-5
+                border-b
+                border-white/30
+                pb-3
+                text-[11px]
+                font-medium
+                uppercase
+                tracking-[0.18em]
+                text-white
+                transition-colors
+                duration-300
+                hover:border-[#FF8000]
+                hover:text-[#FF8000]
+              "
+            >
+              Explore the Network
+
+              <ArrowRight
+                size={15}
+                className="
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
+            </a>
+
+          </div>
+
+        </div>
+      </section>
+
     </main>
   );
 }
