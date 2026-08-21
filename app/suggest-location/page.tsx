@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, MapPin, Mail, Phone } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
-export default function ContactPage() {
+export default function SuggestLocationPage() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    subject: "",
+    phone: "",
+    location: "",
+    mapsLink: "",
+    propertyType: "",
     message: "",
   });
 
@@ -23,7 +26,7 @@ export default function ContactPage() {
     setError("");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/suggest-location", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,23 +34,32 @@ export default function ContactPage() {
         body: JSON.stringify(form),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        throw new Error("Failed");
+        throw new Error(data.error || "Failed to submit");
       }
 
-      setSuccess("Message sent successfully.");
+      setSuccess("Thanks. We've received your location suggestion.");
 
       setForm({
         name: "",
         email: "",
-        subject: "",
+        phone: "",
+        location: "",
+        mapsLink: "",
+        propertyType: "",
         message: "",
       });
-    } catch {
-      setError("Something went wrong. Please try again.");
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   return (
@@ -73,169 +85,45 @@ export default function ContactPage() {
       >
         <div className="max-w-4xl">
 
-          <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-black/40">
-            Contact Topup
+          <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-[#FF8000]">
+            Suggest a Location
           </p>
 
           <h1
             className="
               mt-6
+              max-w-5xl
               text-[clamp(3.5rem,7vw,7rem)]
               font-medium
               leading-[0.86]
               tracking-[-0.065em]
             "
           >
-            Let&apos;s talk.
+            Know a place
+            <br />
+            that needs Topup?
           </h1>
 
           <p
             className="
-              mt-7
-              max-w-xl
+              mt-8
+              max-w-2xl
               text-base
               leading-7
               text-black/55
               md:text-lg
             "
           >
-            Have a question, want to partner with us, or looking to bring
-            Topup charging to your location? Send us a message and we&apos;ll
-            get back to you.
+            Help us decide where to build next. Tell us about a highway,
+            hotel, restaurant, commercial property, or any location that
+            could benefit from reliable EV charging.
           </p>
 
         </div>
       </section>
 
       {/* =====================================================
-          QUICK CONTACT
-      ===================================================== */}
-
-      <section
-        data-navbar-theme="light"
-        className="border-y border-black/10"
-      >
-        <div className="mx-auto grid max-w-[1500px] md:grid-cols-3">
-
-          {/* EMAIL */}
-
-          <a
-            href="mailto:hello@topupchargers.com"
-            className="
-              group
-              border-b
-              border-black/10
-              px-6
-              py-8
-              transition-colors
-              duration-300
-              hover:bg-white
-              md:border-b-0
-              md:border-r
-              md:px-10
-              md:py-9
-              lg:px-14
-            "
-          >
-            <div className="flex items-center gap-3">
-
-              <Mail
-                size={16}
-                strokeWidth={1.5}
-                className="text-[#FF8000]"
-              />
-
-              <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-black/40">
-                Email
-              </span>
-
-            </div>
-
-            <p className="mt-4 text-[15px] text-black/75">
-              hello@topupchargers.com
-            </p>
-
-          </a>
-
-          {/* PHONE */}
-
-          <a
-            href="tel:+919080299599"
-            className="
-              group
-              border-b
-              border-black/10
-              px-6
-              py-8
-              transition-colors
-              duration-300
-              hover:bg-white
-              md:border-b-0
-              md:border-r
-              md:px-10
-              md:py-9
-              lg:px-14
-            "
-          >
-            <div className="flex items-center gap-3">
-
-              <Phone
-                size={16}
-                strokeWidth={1.5}
-                className="text-[#FF8000]"
-              />
-
-              <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-black/40">
-                Phone
-              </span>
-
-            </div>
-
-            <p className="mt-4 text-[15px] text-black/75">
-              +91 90802 99599
-            </p>
-
-          </a>
-
-          {/* LOCATION */}
-
-          <div
-            className="
-              px-6
-              py-8
-              transition-colors
-              duration-300
-              hover:bg-white
-              md:px-10
-              md:py-9
-              lg:px-14
-            "
-          >
-            <div className="flex items-center gap-3">
-
-              <MapPin
-                size={16}
-                strokeWidth={1.5}
-                className="text-[#FF8000]"
-              />
-
-              <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-black/40">
-                Location
-              </span>
-
-            </div>
-
-            <p className="mt-4 text-[15px] text-black/75">
-              Tamil Nadu, India
-            </p>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* =====================================================
-          ENQUIRY
+          FORM
       ===================================================== */}
 
       <section
@@ -244,23 +132,29 @@ export default function ContactPage() {
           mx-auto
           max-w-[1500px]
           px-6
-          py-20
+          pb-28
           md:px-10
-          md:py-28
+          md:pb-36
           lg:px-14
         "
       >
         <div className="grid gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
 
-          {/* =================================================
-              LEFT INFORMATION
-          ================================================= */}
+          {/* LEFT INFORMATION */}
 
           <div className="lg:pt-6">
 
-            <p className="text-[10px] font-medium uppercase tracking-[0.32em] text-black/35">
-              Send an Enquiry
-            </p>
+            <div className="flex items-center gap-3">
+              <MapPin
+                size={17}
+                strokeWidth={1.5}
+                className="text-[#FF8000]"
+              />
+
+              <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/35">
+                Help Us Grow
+              </p>
+            </div>
 
             <h2
               className="
@@ -273,35 +167,38 @@ export default function ContactPage() {
                 md:text-5xl
               "
             >
-              How can we
+              A better
               <br />
-              help?
+              network starts
+              <br />
+              with the right
+              <br />
+              locations.
             </h2>
 
-            <p className="mt-6 max-w-sm text-sm leading-7 text-black/45">
-              You can contact us about charging locations, partnerships,
-              installations, investment opportunities, or anything else
-              related to Topup.
+            <p className="mt-7 max-w-sm text-sm leading-7 text-black/45">
+              We&apos;re looking for locations where EV drivers can easily
+              stop, charge and continue their journey.
             </p>
 
-            <div className="mt-9 border-t border-black/10 pt-5">
+            <div className="mt-10 border-t border-black/10 pt-6">
 
               <p className="text-[10px] font-medium uppercase tracking-[0.25em] text-black/30">
-                What happens next?
+                Good locations include
               </p>
 
-              <p className="mt-3 max-w-sm text-sm leading-6 text-black/45">
-                We&apos;ll review your enquiry and get back to you as soon
-                as possible.
-              </p>
+              <ul className="mt-4 space-y-2 text-sm text-black/50">
+                <li>• Highways and major roads</li>
+                <li>• Hotels and restaurants</li>
+                <li>• Malls and commercial destinations</li>
+                <li>• Existing parking facilities</li>
+              </ul>
 
             </div>
 
           </div>
 
-          {/* =================================================
-              FORM
-          ================================================= */}
+          {/* FORM */}
 
           <div
             className="
@@ -316,7 +213,7 @@ export default function ContactPage() {
             "
           >
 
-            {/* FORM HEADER */}
+            {/* HEADER */}
 
             <div
               className="
@@ -328,24 +225,20 @@ export default function ContactPage() {
                 pb-6
               "
             >
-
               <div>
 
                 <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-black/35">
-                  Enquiry Form
+                  Location Details
                 </p>
 
                 <h3 className="mt-2 text-xl font-medium tracking-[-0.025em]">
-                  Tell us what you need.
+                  Tell us about the location.
                 </h3>
 
               </div>
 
               <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[#FF8000]" />
-
             </div>
-
-            {/* FORM */}
 
             <form
               onSubmit={handleSubmit}
@@ -355,9 +248,8 @@ export default function ContactPage() {
               {/* NAME */}
 
               <label className="block border-b border-black/10 py-5">
-
                 <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-black/40">
-                  Full Name
+                  Your Name
                 </span>
 
                 <input
@@ -382,61 +274,89 @@ export default function ContactPage() {
                     placeholder:text-black/25
                   "
                 />
-
               </label>
 
-              {/* EMAIL */}
+              {/* EMAIL + PHONE */}
+
+              <div className="grid md:grid-cols-2 md:gap-8">
+
+                <label className="block border-b border-black/10 py-5">
+                  <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-black/40">
+                    Email
+                  </span>
+
+                  <input
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm({
+                        ...form,
+                        email: e.target.value,
+                      })
+                    }
+                    placeholder="you@example.com"
+                    className="
+                      mt-3
+                      w-full
+                      bg-transparent
+                      text-[16px]
+                      font-medium
+                      text-[#111111]
+                      outline-none
+                      placeholder:text-black/25
+                    "
+                  />
+                </label>
+
+                <label className="block border-b border-black/10 py-5">
+                  <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-black/40">
+                    Phone
+                  </span>
+
+                  <input
+                    type="tel"
+                    value={form.phone}
+                    onChange={(e) =>
+                      setForm({
+                        ...form,
+                        phone: e.target.value,
+                      })
+                    }
+                    placeholder="+91"
+                    className="
+                      mt-3
+                      w-full
+                      bg-transparent
+                      text-[16px]
+                      font-medium
+                      text-[#111111]
+                      outline-none
+                      placeholder:text-black/25
+                    "
+                  />
+                </label>
+
+              </div>
+
+              {/* LOCATION */}
 
               <label className="block border-b border-black/10 py-5">
-
                 <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-black/40">
-                  Email Address
-                </span>
-
-                <input
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={(e) =>
-                    setForm({
-                      ...form,
-                      email: e.target.value,
-                    })
-                  }
-                  placeholder="you@example.com"
-                  className="
-                    mt-3
-                    w-full
-                    bg-transparent
-                    text-[16px]
-                    font-medium
-                    text-[#111111]
-                    outline-none
-                    placeholder:text-black/25
-                  "
-                />
-
-              </label>
-
-              {/* SUBJECT */}
-
-              <label className="block border-b border-black/10 py-5">
-
-                <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-black/40">
-                  Subject
+                  Location
                 </span>
 
                 <input
                   type="text"
                   required
-                  value={form.subject}
+                  value={form.location}
                   onChange={(e) =>
                     setForm({
                       ...form,
-                      subject: e.target.value,
+                      location: e.target.value,
                     })
                   }
-                  placeholder="What can we help with?"
+                  placeholder="City, area, highway, or address"
                   className="
                     mt-3
                     w-full
@@ -448,20 +368,101 @@ export default function ContactPage() {
                     placeholder:text-black/25
                   "
                 />
+              </label>
 
+              {/* GOOGLE MAPS */}
+
+              <label className="block border-b border-black/10 py-5">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-black/40">
+                  Google Maps Link
+                </span>
+
+                <input
+                  type="url"
+                  value={form.mapsLink}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      mapsLink: e.target.value,
+                    })
+                  }
+                  placeholder="Paste the Google Maps link"
+                  className="
+                    mt-3
+                    w-full
+                    bg-transparent
+                    text-[16px]
+                    font-medium
+                    text-[#111111]
+                    outline-none
+                    placeholder:text-black/25
+                  "
+                />
+              </label>
+
+              {/* PROPERTY TYPE */}
+
+              <label className="block border-b border-black/10 py-5">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-black/40">
+                  Location Type
+                </span>
+
+                <select
+                  required
+                  value={form.propertyType}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      propertyType: e.target.value,
+                    })
+                  }
+                  className="
+                    mt-3
+                    w-full
+                    appearance-none
+                    bg-transparent
+                    text-[16px]
+                    font-medium
+                    text-[#111111]
+                    outline-none
+                  "
+                >
+                  <option value="" disabled>
+                    Select location type
+                  </option>
+                  <option value="Highway / Major Road">
+                    Highway / Major Road
+                  </option>
+                  <option value="Hotel / Resort">
+                    Hotel / Resort
+                  </option>
+                  <option value="Restaurant / Cafe">
+                    Restaurant / Cafe
+                  </option>
+                  <option value="Mall / Commercial Property">
+                    Mall / Commercial Property
+                  </option>
+                  <option value="Parking Facility">
+                    Parking Facility
+                  </option>
+                  <option value="Fuel Station">
+                    Fuel Station
+                  </option>
+                  <option value="Other">
+                    Other
+                  </option>
+                </select>
               </label>
 
               {/* MESSAGE */}
 
               <label className="block border-b border-black/10 py-5">
-
                 <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-black/40">
-                  Message
+                  Why This Location?
                 </span>
 
                 <textarea
                   rows={4}
-                  required
                   value={form.message}
                   onChange={(e) =>
                     setForm({
@@ -469,7 +470,7 @@ export default function ContactPage() {
                       message: e.target.value,
                     })
                   }
-                  placeholder="Tell us a little more..."
+                  placeholder="Tell us why you think this would be a good charging location."
                   className="
                     mt-3
                     w-full
@@ -483,10 +484,9 @@ export default function ContactPage() {
                     placeholder:text-black/25
                   "
                 />
-
               </label>
 
-              {/* STATUS + SUBMIT */}
+              {/* SUBMIT */}
 
               <div className="pt-7">
 
@@ -533,7 +533,7 @@ export default function ContactPage() {
                     disabled:opacity-50
                   "
                 >
-                  {loading ? "Sending..." : "Send Enquiry"}
+                  {loading ? "Sending..." : "Suggest Location"}
 
                   <ArrowRight
                     size={15}
@@ -547,13 +547,13 @@ export default function ContactPage() {
                 </button>
 
                 <p className="mt-4 text-[11px] leading-5 text-black/30">
-                  We&apos;ll only use your details to respond to your enquiry.
+                  Your information will only be used to evaluate the suggested
+                  location and contact you if needed.
                 </p>
 
               </div>
 
             </form>
-
           </div>
 
         </div>

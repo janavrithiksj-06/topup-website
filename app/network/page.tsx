@@ -2,6 +2,8 @@ import PartnerCTA from "@/components/network/PartnerCTA";
 import FadeIn from "@/components/FadeIn";
 import type { Metadata } from "next";
 import LazyMap from "@/components/network/LazyMap";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Find EV Charging Stations | Topup",
@@ -14,6 +16,7 @@ export default function NetworkPage() {
     <main className="min-h-screen overflow-hidden bg-[#EEF2F6] text-[#111111]">
 
       {/* Background Glow */}
+
       <div
         aria-hidden="true"
         className="
@@ -121,7 +124,7 @@ export default function NetworkPage() {
           mx-auto
           max-w-[1400px]
           px-6
-          pb-28
+          pb-20
           md:px-10
         "
       >
@@ -141,9 +144,7 @@ export default function NetworkPage() {
 
             <LazyMap />
 
-            {/* =================================================
-                FLOATING CARD
-            ================================================= */}
+            {/* Floating Card */}
 
             <div
               className="
@@ -192,6 +193,117 @@ export default function NetworkPage() {
                 </span>
 
               </div>
+
+            </div>
+
+          </div>
+
+        </FadeIn>
+      </section>
+
+      {/* =====================================================
+          SUGGEST A LOCATION
+      ===================================================== */}
+
+      <section
+        data-navbar-theme="light"
+        className="
+          mx-auto
+          max-w-[1400px]
+          px-6
+          pb-24
+          md:px-10
+        "
+      >
+        <FadeIn>
+
+          <div
+            className="
+              border-y
+              border-[#D7DEE7]
+              py-10
+              md:py-12
+            "
+          >
+
+            <div
+              className="
+                flex
+                flex-col
+                gap-8
+                md:flex-row
+                md:items-center
+                md:justify-between
+              "
+            >
+
+              {/* Text */}
+
+              <div className="max-w-2xl">
+
+                <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#FF8000]">
+                  Help Us Grow
+                </p>
+
+                <h2
+                  className="
+                    mt-4
+                    text-3xl
+                    font-medium
+                    leading-tight
+                    tracking-[-0.035em]
+                    md:text-4xl
+                  "
+                >
+                  Know a location that needs Topup?
+                </h2>
+
+                <p className="mt-3 max-w-xl text-[15px] leading-7 text-[#5F6B7A]">
+                  Tell us about a highway, destination, hotel, commercial
+                  property or other location that could benefit from fast EV
+                  charging.
+                </p>
+
+              </div>
+
+              {/* CTA */}
+
+              <Link
+                href="/suggest-location"
+                className="
+                  group
+                  inline-flex
+                  w-fit
+                  shrink-0
+                  items-center
+                  gap-4
+                  rounded-full
+                  bg-[#111111]
+                  px-6
+                  py-3.5
+                  text-[12px]
+                  font-medium
+                  uppercase
+                  tracking-[0.15em]
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:bg-[#FF8000]
+                  hover:text-[#111111]
+                "
+              >
+                Suggest a Location
+
+                <ArrowRight
+                  size={15}
+                  strokeWidth={1.5}
+                  className="
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                />
+              </Link>
 
             </div>
 
