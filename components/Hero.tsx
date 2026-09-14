@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -32,30 +33,34 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden bg-[#080808] text-white"
     >
       {/* =========================================================
-          CINEMATIC HERO VIDEO
+          HERO MEDIA
       ========================================================= */}
 
       <div className="absolute inset-0">
-       <video
-  autoPlay
-  muted
-  loop
-  playsInline
-  preload="metadata"
-  aria-hidden="true"
-  className="absolute inset-0 h-full w-full object-cover"
->
-  <source
-    src="/videos/hero-mobile.mp4"
-    media="(max-width: 767px)"
-    type="video/mp4"
-  />
+        <Image
+          src="/images/mobile-hero.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover md:hidden"
+        />
 
-  <source
-    src="/videos/hero-desktop.mp4"
-    type="video/mp4"
-  />
-</video>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          className="absolute inset-0 hidden h-full w-full object-cover md:block"
+        >
+          <source
+            src="/videos/hero-desktop.mp4"
+            media="(min-width: 768px)"
+            type="video/mp4"
+          />
+        </video>
 
         {/* Very light overall treatment */}
         <div
