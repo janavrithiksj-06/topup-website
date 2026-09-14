@@ -52,21 +52,29 @@ export default function Hero() {
         />
 
         {/* Desktop video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/images/mobile-hero.png"
-          aria-hidden="true"
-          className="absolute inset-0 hidden h-full w-full object-cover md:block"
-        >
-          <source
-            src="/videos/hero-desktop.mp4"
-            type="video/mp4"
-          />
-        </video>
+       {/* Desktop hero video */}
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  poster="/images/mobile-hero.png"
+  aria-hidden="true"
+  className="
+    absolute inset-0
+    hidden
+    h-full
+    w-full
+    object-cover
+    md:block
+  "
+>
+  <source
+    src="/videos/hero-desktop.mp4"
+    type="video/mp4"
+  />
+</video>
 
         {/* Overall dark treatment */}
         <div
