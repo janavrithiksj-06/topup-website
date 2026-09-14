@@ -172,7 +172,7 @@ export default function Hero() {
             </span>
 
             <span className="sr-only">
-              Topup EV charging network with DC fast chargers across India
+              Topup EV charging network with chargers across India
             </span>
           </motion.h1>
 
@@ -189,7 +189,7 @@ export default function Hero() {
               md:leading-8
             "
           >
-            A reliable DC fast charging network built for
+            A reliable electric vehicle charging network built for
             electric mobility across India.
           </motion.p>
 
