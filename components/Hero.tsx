@@ -33,42 +33,48 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden bg-[#080808] text-white"
     >
       {/* =========================================================
-          HERO MEDIA
+          HERO BACKGROUND
       ========================================================= */}
 
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
+        {/* Fallback background */}
+        <div className="absolute inset-0 bg-[#080808]" />
+
+        {/* Mobile background */}
         <Image
           src="/images/mobile-hero.png"
           alt=""
           aria-hidden="true"
           fill
+          priority
           sizes="100vw"
           className="object-cover md:hidden"
         />
 
+        {/* Desktop video */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
+          poster="/images/mobile-hero.png"
           aria-hidden="true"
           className="absolute inset-0 hidden h-full w-full object-cover md:block"
         >
           <source
             src="/videos/hero-desktop.mp4"
-            media="(min-width: 768px)"
             type="video/mp4"
           />
         </video>
 
-        {/* Very light overall treatment */}
+        {/* Overall dark treatment */}
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-black/15"
         />
 
-        {/* Protects the left-side typography without killing the video */}
+        {/* Left-side readability gradient */}
         <div
           aria-hidden="true"
           className="
@@ -80,7 +86,7 @@ export default function Hero() {
           "
         />
 
-        {/* Subtle bottom transition */}
+        {/* Bottom transition */}
         <div
           aria-hidden="true"
           className="
@@ -94,7 +100,6 @@ export default function Hero() {
 
       {/* =========================================================
           HERO CONTENT
-          Existing Navbar sits above this component.
       ========================================================= */}
 
       <div
@@ -114,8 +119,7 @@ export default function Hero() {
         "
       >
         <div className="w-full">
-
-          {/* Small eyebrow */}
+          {/* Eyebrow */}
           <motion.div
             {...reveal(0.1, 12)}
             className="mb-7 flex items-center gap-4"
@@ -139,10 +143,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* =====================================================
-              MAIN HEADLINE
-          ===================================================== */}
-
+          {/* Main headline */}
           <motion.h1
             {...reveal(0.18, 30)}
             className="
@@ -167,10 +168,7 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* =====================================================
-              DESCRIPTION
-          ===================================================== */}
-
+          {/* Description */}
           <motion.p
             {...reveal(0.3, 18)}
             className="
@@ -187,10 +185,7 @@ export default function Hero() {
             electric mobility across India.
           </motion.p>
 
-          {/* =====================================================
-              ACTIONS
-          ===================================================== */}
-
+          {/* Actions */}
           <motion.div
             {...reveal(0.4, 16)}
             className="
@@ -282,7 +277,11 @@ export default function Hero() {
       ========================================================= */}
 
       <motion.div
-        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+        initial={
+          shouldReduceMotion
+            ? { opacity: 1 }
+            : { opacity: 0 }
+        }
         animate={{ opacity: 1 }}
         transition={{
           duration: shouldReduceMotion ? 0 : 1,
@@ -312,7 +311,6 @@ export default function Hero() {
           "
         >
           <div className="flex items-center gap-7">
-
             <div>
               <p className="text-[8px] uppercase tracking-[0.28em] text-white/30">
                 Launching
@@ -354,7 +352,11 @@ export default function Hero() {
       ========================================================= */}
 
       <motion.div
-        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+        initial={
+          shouldReduceMotion
+            ? { opacity: 1 }
+            : { opacity: 0 }
+        }
         animate={{ opacity: 1 }}
         transition={{
           duration: shouldReduceMotion ? 0 : 0.8,
